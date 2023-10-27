@@ -10,43 +10,75 @@
 			
 			
 			\noindent \textbf{Dionici:}
-			
 			\begin{packed_enum}
-				
-				\item Dionik 1
-				\item Dionik 2				
-				\item ...
-				
+				\item Neregistrirani korisnici
+				\item Registrirani korisnici
+					\begin{packed_enum}
+						\item Izdavači
+						\item Antikvarijati
+						\item Preprodavači
+					\end{packed_enum}
+				\item Administratori
+				\item Baza podataka
 			\end{packed_enum}
 			
 			\noindent \textbf{Aktori i njihovi funkcionalni zahtjevi:}
-			
-			
 			\begin{packed_enum}
-				\item  \underbar{Aktor 1 (inicijator) može:}
-				
+			
+				\item  \underbar{Neregistrirani korisnik (inicijator) može:}
 				\begin{packed_enum}
-					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
+					\item pretraživati ponudu knjiga po:
 					\begin{packed_enum}
-						
-						\item  podfunkcionalnost 1 
-						\item  podfunkcionalnost 2
-				
+						\item  značajkama knjige 
+						\item  ponuditelju
 					\end{packed_enum}
-					\item  funkcionalnost 3
-					
+					\item  pretraživati ponuditelje na karti
+					\item odabrati ponuditelja i izlistati sve knjige u njegovoj ponudi
+					\item zahtjevati od izdavača da kontaktira stranog izdavača za prijevod
+					\item registrirati se 
+						\begin{itemize}
+							\item unjeti podatke
+						\end{itemize}
 				\end{packed_enum}
 			
-				\item  \underbar{Aktor 2 (sudionik) može:}
-				
+				\item  \underbar{Izdavač (inicijator) može:}
 				\begin{packed_enum}
-					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
-					
+					\item zatržiti od stranog izdavača dozvolu za prijevod
+					\item ponuditi knjige na hrvatskom jeziku
+					\item maknuti knjige iz svoje pponude
 				\end{packed_enum}
+				
+				\item  \underbar{Antikvarijat (inicijator) može:}
+				\begin{packed_enum}
+					\item ponuditi knjige na hrvatskom i srodnim jezicima
+					\item maknuti knjige iz svoje pponude
+				\end{packed_enum}
+				
+				\item  \underbar{Preprodavač (inicijator) može:}
+				\begin{packed_enum}
+					\item ponuditi knjige na bilo kojem jeziku
+					\item maknuti knjige iz svoje pponude
+				\end{packed_enum}
+								
+				\item \underbar{Administrator (inicijator) može:}
+					\begin{packed_enum}
+						\item odobriti registraciju
+							\begin{itemize}
+								\item provjeriti je li adresa antikvarijata u RH i 
+								\item jesu li ostali podatci dobri
+							\end{itemize}
+						\item ukloniti registrirane korisnike
+						\item mijenjati vrstu korisnika
+						\item pristupiti bazi podataka
+					\end{packed_enum}
+					
+				\item \underbar{Baza podataka (sudionik) pohranjuje podatke o:}
+					\begin{packed_enum}
+						\item registriranim korisnicima
+						\item knjigama (uključujući i oznake knjige)
+						\item zahtjevima za prijevod
+					\end{packed_eunm}
+					
 			\end{packed_enum}
 			
 			\eject 
