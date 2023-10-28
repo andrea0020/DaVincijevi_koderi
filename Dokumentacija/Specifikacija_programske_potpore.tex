@@ -36,9 +36,9 @@
 					\item odabrati ponuditelja i izlistati sve knjige u njegovoj ponudi
 					\item zahtjevati od izdavača da kontaktira stranog izdavača za prijevod
 					\item registrirati se 
-						\begin{itemize}
+						\begin{packed_item}
 							\item unjeti podatke
-						\end{itemize}
+						\end{packed_item}
 				\end{packed_enum}
 			
 				\item  \underbar{Izdavač (inicijator) može:}
@@ -63,10 +63,10 @@
 				\item \underbar{Administrator (inicijator) može:}
 					\begin{packed_enum}
 						\item odobriti registraciju
-							\begin{itemize}
+							\begin{packed_item}
 								\item provjeriti je li adresa antikvarijata u RH i 
 								\item jesu li ostali podatci dobri
-							\end{itemize}
+							\end{packed_item}
 						\item ukloniti registrirane korisnike
 						\item mijenjati vrstu korisnika
 						\item pristupiti bazi podataka
@@ -93,38 +93,92 @@
 					\textit{Funkcionalne zahtjeve razraditi u obliku obrazaca uporabe. Svaki obrazac je potrebno razraditi prema donjem predlošku. Ukoliko u nekom koraku može doći do odstupanja, potrebno je to odstupanje opisati i po mogućnosti ponuditi rješenje kojim bi se tijek obrasca vratio na osnovni tijek.}\\
 					
 
-					\noindent \underbar{\textbf{UC$<$broj obrasca$>$ -$<$ime obrasca$>$}}
+					\noindent \underbar{\textbf{UC$<$1$>$ -$<$Pretraživanje knjiga po značajkama$>$}}
 					\begin{packed_item}
-	
-						\item \textbf{Glavni sudionik: }$<$sudionik$>$
-						\item  \textbf{Cilj:} $<$cilj$>$
-						\item  \textbf{Sudionici:} $<$sudionici$>$
-						\item  \textbf{Preduvjet:} $<$preduvjet$>$
+						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
+						\item  \textbf{Cilj:} $<$Pregledati ponudu knjiga$>$
+						\item  \textbf{Sudionici:} $<$Baza podataka$>$
+						\item  \textbf{Preduvjet:} $<$-$>$
 						\item  \textbf{Opis osnovnog tijeka:}
-						
 						\item[] \begin{packed_enum}
-	
-							\item $<$opis korak jedan$>$
-							\item $<$opis korak dva$>$
-							\item $<$opis korak tri$>$
-							\item $<$opis korak četiri$>$
-							\item $<$opis korak pet$>$
+							\item $<$odabir značajki knjige po kojima se želi pretražiti$>$
+							\item $<$prikazuje se ponuda knjiga s odabranim značajkama$>$
 						\end{packed_enum}
-						
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC$<$2$>$ -$<$Pretraživanje knjiga po ponuditelju$>$}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
+						\item  \textbf{Cilj:} $<$Pregledati ponudu knjiga$>$
+						\item  \textbf{Sudionici:} $<$Baza podataka$>$
+						\item  \textbf{Preduvjet:} $<$-$>$
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item $<$odabir ponuditelja čiju ponudu želi pregledati$>$
+							\item $<$prikazuje se ponuda knjiga odabranog poslužitelja$>$
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC$<$3$>$ -$<$Pretraživanje ponuditelja na karti$>$}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
+						\item  \textbf{Cilj:} $<$Pregledati ponuditelje u blizini$>$
+						\item  \textbf{Sudionici:} $<$Baza podataka$>$
+						\item  \textbf{Preduvjet:} $<$-$>$
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item $<$otvaranje karte s označenim ponuditeljima$>$
+							\item $<$odabir lokacije i ponuditelja$>$
+							\item $<$ispis podataka o ponuditelju i njihove ponude$>$
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC$<$4$>$ -$<$Zahtjev za prijevodom$>$}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
+						\item  \textbf{Cilj:} $<$Zatračiti prijevod knjige na stranom jeziku$>$
+						\item  \textbf{Sudionici:} $<$Izdavač, baza podataka$>$
+						\item  \textbf{Preduvjet:} $<$Knjige nije prevedena na hrvatski$>$
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item $<$odabir ~"Zahtjevaj prijevod" u sučelju aplikacije$>$
+							\item $<$zahtjev se bilježi u bazu podataka$>$
+							\item $<$izdavač dobija poruku o novom zahtjevu$>$
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC$<$5$>$ -$<$Registracija$>$}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
+						\item  \textbf{Cilj:} $<$Registrirati se kao ponuditelj$>$
+						\item  \textbf{Sudionici:} $<$Baza podataka, administrator$>$
+						\item  \textbf{Preduvjet:} $<$-$>$
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item $<$odabir "Sign up" u sučelju$>$
+							\item $<$unos vrste ponuditelja (izdavač, antikvarijat, preprodavač)$>$
+							\item $<$unos podataka (naziv, e-pošta, adresa, broj telefona)$>$
+							\item $<$unos korisničkog imena i lozinke$>$
+							\item $<$administrator odobrava račun$>$
+							\item $<$poruka na e-pošti o odobrenju ili neodobrenju računa$>$
+						\end{packed_enum}
 						\item  \textbf{Opis mogućih odstupanja:}
-						
 						\item[] \begin{packed_item}
-	
-							\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
+							\item[3.a] $<$adresa antikvarijata nije u RH$>$
 							\item[] \begin{packed_enum}
-								
-								\item $<$opis rješenja mogućeg scenarija korak 1$>$
-								\item $<$opis rješenja mogućeg scenarija korak 2$>$
-								
+								\item $<$nemogućnost nastavka registracije bez promjene podataka$>$
+								\item $<$upozorenje$>$
 							\end{packed_enum}
-							\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
-							
+							\item[3.b] $<$adresa preprodavača nije u zemlji srodnog jezika$>$
+							\item[] \begin{packed_enum}
+								\item $<$nemogućnost nastavka registracije bez promjene podataka$>$
+								\item $<$upozorenje$>$
+							\end{packed_enum}
+							\item[4.a] $<$korisničko ime već postoji$>$
+							\item[] \begin{packed_enum}
+								\item $<$nemogućnost nastavka registracije bez promjene podataka$>$
+								\item $<$upozorenje$>$
+							\end{packed_enum}	
 						\end{packed_item}
 					\end{packed_item}
 				
