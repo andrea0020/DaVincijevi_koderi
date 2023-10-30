@@ -2,12 +2,6 @@
 		
 	\section{Funkcionalni zahtjevi}
 			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Navesti \textbf{dionike} koji imaju \textbf{interes u ovom sustavu} ili  \textbf{su nositelji odgovornosti}. To su prije svega korisnici, ali i administratori sustava, naručitelji, razvojni tim.}\\
-				
-			\textit{Navesti \textbf{aktore} koji izravno \textbf{koriste} ili \textbf{komuniciraju sa sustavom}. Oni mogu imati inicijatorsku ulogu, tj. započinju određene procese u sustavu ili samo sudioničku ulogu, tj. obavljaju određeni posao. Za svakog aktora navesti funkcionalne zahtjeve koji se na njega odnose.}\\
-			
 			
 			\noindent \textbf{Dionici:}
 			\begin{packed_enum}
@@ -37,27 +31,27 @@
 					\item zahtjevati od izdavača da kontaktira stranog izdavača za prijevod
 					\item registrirati se 
 						\begin{packed_item}
-							\item unjeti podatke
+							\item unijeti podatke
 						\end{packed_item}
 				\end{packed_enum}
 			
 				\item  \underbar{Izdavač (inicijator) može:}
 				\begin{packed_enum}
-					\item zatržiti od stranog izdavača dozvolu za prijevod
+					\item zatražiti od stranog izdavača dozvolu za prijevod
 					\item ponuditi knjige na hrvatskom jeziku
-					\item maknuti knjige iz svoje pponude
+					\item maknuti knjige iz svoje ponude
 				\end{packed_enum}
 				
 				\item  \underbar{Antikvarijat (inicijator) može:}
 				\begin{packed_enum}
 					\item ponuditi knjige na hrvatskom i srodnim jezicima
-					\item maknuti knjige iz svoje pponude
+					\item maknuti knjige iz svoje ponude
 				\end{packed_enum}
 				
 				\item  \underbar{Preprodavač (inicijator) može:}
 				\begin{packed_enum}
 					\item ponuditi knjige na bilo kojem jeziku
-					\item maknuti knjige iz svoje pponude
+					\item maknuti knjige iz svoje ponude
 				\end{packed_enum}
 								
 				\item \underbar{Administrator (inicijator) može:}
@@ -77,7 +71,7 @@
 						\item registriranim korisnicima
 						\item knjigama (uključujući i oznake knjige)
 						\item zahtjevima za prijevod
-					\end{packed_eunm}
+					\end{packed_enum}
 					
 			\end{packed_enum}
 			
@@ -86,100 +80,327 @@
 			
 				
 			\subsection{Obrasci uporabe}
-				
-				\textbf{\textit{dio 1. revizije}}
-				
-				\subsubsection{Opis obrazaca uporabe}
-					\textit{Funkcionalne zahtjeve razraditi u obliku obrazaca uporabe. Svaki obrazac je potrebno razraditi prema donjem predlošku. Ukoliko u nekom koraku može doći do odstupanja, potrebno je to odstupanje opisati i po mogućnosti ponuditi rješenje kojim bi se tijek obrasca vratio na osnovni tijek.}\\
+			
+					\noindent \textbf{Opis obrazaca uporabe} \\
 					
 
-					\noindent \underbar{\textbf{UC$<$1$>$ -$<$Pretraživanje knjiga po značajkama$>$}}
+					\noindent \underbar{\textbf{UC1 - Pretraživanje knjiga po značajkama}}
 					\begin{packed_item}
-						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
-						\item  \textbf{Cilj:} $<$Pregledati ponudu knjiga$>$
-						\item  \textbf{Sudionici:} $<$Baza podataka$>$
-						\item  \textbf{Preduvjet:} $<$-$>$
+						\item \textbf{Glavni sudionik: }Neregistrirani korisnik
+						\item  \textbf{Cilj:} Pregledati ponudu knjiga
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} -
 						\item  \textbf{Opis osnovnog tijeka:}
 						\item[] \begin{packed_enum}
-							\item $<$odabir značajki knjige po kojima se želi pretražiti$>$
-							\item $<$prikazuje se ponuda knjiga s odabranim značajkama$>$
+							\item odabir značajki knjige po kojima se želi pretražiti
+							\item prikazuje se ponuda knjiga s odabranim značajkama
 						\end{packed_enum}
 					\end{packed_item}
 					
-					\noindent \underbar{\textbf{UC$<$2$>$ -$<$Pretraživanje knjiga po ponuditelju$>$}}
+					\noindent \underbar{\textbf{UC2 - Pretraživanje knjiga po ponuditelju}}
 					\begin{packed_item}
-						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
-						\item  \textbf{Cilj:} $<$Pregledati ponudu knjiga$>$
-						\item  \textbf{Sudionici:} $<$Baza podataka$>$
-						\item  \textbf{Preduvjet:} $<$-$>$
+						\item \textbf{Glavni sudionik: }Neregistrirani korisnik
+						\item  \textbf{Cilj:} Pregledati ponudu knjiga
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} -
 						\item  \textbf{Opis osnovnog tijeka:}
 						\item[] \begin{packed_enum}
-							\item $<$odabir ponuditelja čiju ponudu želi pregledati$>$
-							\item $<$prikazuje se ponuda knjiga odabranog poslužitelja$>$
+							\item odabir ponuditelja čiju ponudu želi pregledati
+							\item prikazuje se ponuda knjiga odabranog poslužitelja
 						\end{packed_enum}
 					\end{packed_item}
 					
-					\noindent \underbar{\textbf{UC$<$3$>$ -$<$Pretraživanje ponuditelja na karti$>$}}
+					\noindent \underbar{\textbf{UC3 - Pretraživanje ponuditelja na karti}}
 					\begin{packed_item}
-						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
-						\item  \textbf{Cilj:} $<$Pregledati ponuditelje u blizini$>$
-						\item  \textbf{Sudionici:} $<$Baza podataka$>$
-						\item  \textbf{Preduvjet:} $<$-$>$
+						\item \textbf{Glavni sudionik: }Neregistrirani korisnik
+						\item  \textbf{Cilj:} Pregledati ponuditelje u blizini
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} -
 						\item  \textbf{Opis osnovnog tijeka:}
 						\item[] \begin{packed_enum}
-							\item $<$otvaranje karte s označenim ponuditeljima$>$
-							\item $<$odabir lokacije i ponuditelja$>$
-							\item $<$ispis podataka o ponuditelju i njihove ponude$>$
+							\item otvaranje karte s označenim ponuditeljima
+							\item odabir lokacije i ponuditelja
+							\item ispis podataka o ponuditelju i njihove ponude
 						\end{packed_enum}
 					\end{packed_item}
 					
-					\noindent \underbar{\textbf{UC$<$4$>$ -$<$Zahtjev za prijevodom$>$}}
+					\noindent \underbar{\textbf{UC4 - Zahtjev za prijevodom}}
 					\begin{packed_item}
-						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
-						\item  \textbf{Cilj:} $<$Zatračiti prijevod knjige na stranom jeziku$>$
-						\item  \textbf{Sudionici:} $<$Izdavač, baza podataka$>$
-						\item  \textbf{Preduvjet:} $<$Knjige nije prevedena na hrvatski$>$
+						\item \textbf{Glavni sudionik: }Neregistrirani korisnik
+						\item  \textbf{Cilj:} Zatražiti prijevod knjige na stranom jeziku
+						\item  \textbf{Sudionici:} Izdavač, baza podataka
+						\item  \textbf{Preduvjet:} Knjiga nije prevedena na hrvatski
 						\item  \textbf{Opis osnovnog tijeka:}
 						\item[] \begin{packed_enum}
-							\item $<$odabir ~"Zahtjevaj prijevod" u sučelju aplikacije$>$
-							\item $<$zahtjev se bilježi u bazu podataka$>$
-							\item $<$izdavač dobija poruku o novom zahtjevu$>$
+							\item odabir ~"Zahtjevaj prijevod" u sučelju aplikacije
+							\item zahtjev se bilježi u bazu podataka
+							\item izdavač dobija poruku o novom zahtjevu
 						\end{packed_enum}
 					\end{packed_item}
 					
-					\noindent \underbar{\textbf{UC$<$5$>$ -$<$Registracija$>$}}
+					\noindent \underbar{\textbf{UC5 - Registracija}}
 					\begin{packed_item}
-						\item \textbf{Glavni sudionik: }$<$Neregistrirani korisnik$>$
-						\item  \textbf{Cilj:} $<$Registrirati se kao ponuditelj$>$
-						\item  \textbf{Sudionici:} $<$Baza podataka, administrator$>$
-						\item  \textbf{Preduvjet:} $<$-$>$
+						\item \textbf{Glavni sudionik: }Neregistrirani korisnik
+						\item  \textbf{Cilj:} Registrirati se kao ponuditelj
+						\item  \textbf{Sudionici:} Baza podataka, administrator
+						\item  \textbf{Preduvjet:} -
 						\item  \textbf{Opis osnovnog tijeka:}
 						\item[] \begin{packed_enum}
-							\item $<$odabir "Sign up" u sučelju$>$
-							\item $<$unos vrste ponuditelja (izdavač, antikvarijat, preprodavač)$>$
-							\item $<$unos podataka (naziv, e-pošta, adresa, broj telefona)$>$
-							\item $<$unos korisničkog imena i lozinke$>$
-							\item $<$administrator odobrava račun$>$
-							\item $<$poruka na e-pošti o odobrenju ili neodobrenju računa$>$
+							\item odabir "Sign up" u sučelju
+							\item unos vrste ponuditelja (izdavač, antikvarijat, preprodavač)
+							\item unos podataka (naziv, e-pošta, adresa, broj telefona)
+							\item unos korisničkog imena i lozinke
+							\item administrator odobrava račun
+							\item poruka na e-pošti o odobrenju ili neodobrenju računa
 						\end{packed_enum}
 						\item  \textbf{Opis mogućih odstupanja:}
 						\item[] \begin{packed_item}
-							\item[3.a] $<$adresa antikvarijata nije u RH$>$
+							\item[3.a] adresa antikvarijata nije u RH
 							\item[] \begin{packed_enum}
-								\item $<$nemogućnost nastavka registracije bez promjene podataka$>$
-								\item $<$upozorenje$>$
+								\item nemogućnost nastavka registracije bez promjene podataka
+								\item upozorenje
 							\end{packed_enum}
-							\item[3.b] $<$adresa preprodavača nije u zemlji srodnog jezika$>$
+							\item[3.b] adresa preprodavača nije u zemlji srodnog jezika
 							\item[] \begin{packed_enum}
-								\item $<$nemogućnost nastavka registracije bez promjene podataka$>$
-								\item $<$upozorenje$>$
+								\item nemogućnost nastavka registracije bez promjene podataka
+								\item upozorenje
 							\end{packed_enum}
-							\item[4.a] $<$korisničko ime već postoji$>$
+							\item[4.a] korisničko ime već postoji
 							\item[] \begin{packed_enum}
-								\item $<$nemogućnost nastavka registracije bez promjene podataka$>$
-								\item $<$upozorenje$>$
+								\item nemogućnost nastavka registracije bez promjene podataka
+								\item upozorenje
 							\end{packed_enum}	
 						\end{packed_item}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC6 - Ponuda naslova knjiga}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Ponuditelj
+						\item  \textbf{Cilj:} Ponuditi neograničen broj naslova knjiga
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registrirati se kao ponuditelj
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Ponuditelj odabire ~"Ponudi naslov knjige" u sučelju aplikacije
+							\item Ponuditelj odabire naslove koje želi ponuditi
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC7 - Ponuda primjeraka knjiga}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Ponuditelj
+						\item  \textbf{Cilj:} Ponuditi neograničen broj primjeraka knjiga
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registrirati se kao ponuditelj
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Ponuditelj odabire ~"Ponudi primjerak knjige" u sučelju aplikacije
+							\item Ponuditelj odabire primjerke knjiga
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC8 - Pregled želja neregistriranih korisnika}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Izdavač
+						\item  \textbf{Cilj:} Prikupiti želje neregistriranih korisnika
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registrirati se kao izdavač
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Praćenje aktivnosti neregistriranog korisnika
+							\item Bilježenje i prikupljanje njegovih želja
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC9 - Zahtjev za dozvolu prijevoda sa stranog jezika}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Izdavač
+						\item  \textbf{Cilj:} Zatražiti prijevod knjige sa stranog jezika na hrvatski
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registrirati se kao izdavač
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Izdavač pregleda želje neregistriranih korisnika
+							\item Izdavač odabire knjige
+							\item Izdavač zatraži dozvolu za prijevodom
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC10 - Zahtjev za dozvolu prijevoda sa srodnog jezika}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Izdavač
+						\item  \textbf{Cilj:} Zatražiti prijevod knjige sa srodnog jezika na hrvatski
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registrirati se kao izdavač
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Izdavač pregleda želje neregistriranih korisnika
+							\item Izdavač odabire knjige
+							\item Izdavač zatraži dozvolu za prijevodom
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC11 - Ponuda knjiga na hrvatskom jeziku od strane izdavača}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Izdavač
+						\item  \textbf{Cilj:} Ponuditi knjigu na hrvatskom jeziku
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:}
+						\item[] \begin{packed_enum}
+							\item Registrirati se kao izdavač
+							\item Imati u svojoj ponudi knjige na hrvatskom jeziku
+						\end{packed_enum}
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Izdavač odabire knjige za ponudu
+							\item Izdavač nudi odabrane knjige
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC12 - Ponuda knjige na stranom jeziku od strane antikvarijata}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Antikvarijat
+						\item  \textbf{Cilj:} Ponuditi knjige na stranom jeziku
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Uspješna registracija kao antikvarijata
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Antikvarijat odabire knjige na stranom jeziku
+							\item Antikvarijat nudi odabrane knjige
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC13 - Ponuda knjige na srodnom jeziku od strane antikvarijata}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Antikvarijat
+						\item  \textbf{Cilj:} Ponuditi knjige na srodnom jeziku
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Uspješna registracija kao antikvarijata
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Antikvarijat odabire knjige na srodnom jeziku
+							\item Antikvarijat nudi odabrane knjige
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC14 - Ponuda knjige na hrvatskom jeziku od strane antikvarijata}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Antikvarijat
+						\item  \textbf{Cilj:} Ponuditi knjige na hrvatskom jeziku
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Uspješna registracija kao antikvarijata
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Antikvarijat odabire knjige na hrvatskom jeziku
+							\item Antikvarijat nudi odabrane knjige
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC15 - Ponuda knjige na stranom jeziku od strane preprodavača}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Preprodavač
+						\item  \textbf{Cilj:} Ponuditi knjige na stranom jeziku
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Uspješna registracija kao preprodavača
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Preprodavač odabire knjige na stranom jeziku
+							\item Preprodavač nudi odabrane knjige
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC16 - Ponuda knjige na srodnom jeziku od strane preprodavača}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Preprodavač
+						\item  \textbf{Cilj:} Ponuditi knjige na srodnom jeziku
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Uspješna registracija kao preprodavača
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Preprodavač odabire knjige na srodnom jeziku
+							\item Preprodavač nudi odabrane knjige
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC17 - Ponuda knjige na hrvatskom jeziku od strane preprodavača}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Preprodavač
+						\item  \textbf{Cilj:} Ponuditi knjige na hrvatskom jeziku
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Uspješna registracija kao preprodavača
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Preprodavač odabire knjige na hrvatskom jeziku
+							\item Preprodavač nudi odabrane knjige
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC18 - Određivanje ispravne oznake nove knjige}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Ponuditelj
+						\item  \textbf{Cilj:} Ispravno odabrati oznaku vrste knjige kod dodavanja nove knjige
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registrirati se kao ponuditelj
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Ponuditelj odabire novu knjigu
+							\item Ponuditelj odabire ispravnu vrstu oznake za tu knjigu
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC19 - Određivanje ispravne oznake primjerka već dodane knjige}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Ponuditelj
+						\item  \textbf{Cilj:} Ispravno odabrati oznaku vrste knjige za taj primjerak
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registrirati se kao ponuditelj
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Ponuditelj odabire već postojeću knjigu
+							\item Ponuditelj odabire ispravnu vrstu oznake za tu knjigu
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					
+					\noindent \underbar{\textbf{UC20 - Ispravak oznake novog primjerka pri dodavanju}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Ponuditelj
+						\item  \textbf{Cilj:} Izmijeniti pogrešno odabranu oznaku
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registrirati se kao ponuditelj
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Ponuditelj odabire primjerak s pogrešnom oznakom
+							\item Ponuditelj ispravlja oznaku za taj primjerak knjige
+							\item Ponuditelj dodaje primjerak knjige
+							\item U bazu podataka se pohrani promjena
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC21 - Ispravak oznake novog primjerka pri uklanjanju}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Ponuditelj
+						\item  \textbf{Cilj:} Izmijeniti pogrešno odabranu oznaku
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registrirati se kao ponuditelj
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Ponuditelj odabire primjerak s pogrešnom oznakom
+							\item Ponuditelj ispravlja oznaku za taj primjerak knjige
+							\item Ponuditelj uklanja primjerak knjige
+							\item Iz baze podataka se uklanja primjerak
+						\end{packed_enum}
 					\end{packed_item}
 				
 					
