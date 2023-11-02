@@ -399,7 +399,49 @@
 							\item Ponuditelj odabire primjerak s pogrešnom oznakom
 							\item Ponuditelj ispravlja oznaku za taj primjerak knjige
 							\item Ponuditelj uklanja primjerak knjige
-							\item Iz baze podataka se uklanja primjerak knjige \\
+							\item Iz baze podataka se uklanja primjerak knjige
+						\end{packed_enum}
+					\end{packed_item}
+					
+						\noindent \underbar{\textbf{UC22 - Odobravanje registracije}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Administrator
+						\item  \textbf{Cilj:} Odobriti registraciju korisnika
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Korisnik je registriran i dodijeljena su mu prava administratora
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Administrator pregleda zahtjev za registraciju
+							\item Administrator provjerava odgovaraju li uneseni podaci
+							\item Posebno za antikvarijata provjerava je li mu adresa u RH
+							\item Ako je prijava ispravna, administrator odobrava registraciju korisnika
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC23 - Brisanje korisnika}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Administrator
+						\item  \textbf{Cilj:} Izbrisati registriranog korisnika
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Korisnik je registriran i dodijeljena su mu prava administratora
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Administrator odabire opciju uklanjanja korisnika
+							\item Administrator pronalazi željenog korisnika
+							\item Administrator uklanja željenog korisnika i njegove podatke iz baze podataka
+						\end{packed_enum}
+					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC24 - Promjena vrste korisnika}}
+					\begin{packed_item}
+						\item \textbf{Glavni sudionik: }Administrator
+						\item  \textbf{Cilj:} Izmijeniti vrstu i prava korisnika
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Korisnik je registriran i dodijeljena su mu prava administratora
+						\item  \textbf{Opis osnovnog tijeka:}
+						\item[] \begin{packed_enum}
+							\item Administrator pronalazi željenog korisnika
+							\item Administrator mijenja vrstu i prava korisnika \\
 						\end{packed_enum}
 					\end{packed_item}
 				
