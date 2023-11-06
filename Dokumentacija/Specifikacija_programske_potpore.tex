@@ -480,12 +480,60 @@
 					
 				
 			\subsection{Sekvencijski dijagrami}
+			\subsubsection{Obrazac uporabe UC1 - Pretraživanje knjiga po značajkama}
+			Neregistrirani korisnik odabire pretraživanje knjige po značajkama. Na ekranu mu se pojavljuje forma za odabir značajki knjige. Korisnik odabire značajke knjige i klikne na dugme za pretraživanje kako bi pretražio knjige sa željenim značajkama. Web aplikacija zaprima zahtjev i šalje upit prema bazi podataka. Od baze podataka prema web aplikaciji se vraća rezultat. Ako u bazi podataka postoji ponuditelj koji nudi knjigu ili više knjiga s odabranim značajkama na ekranu mu se pokazuje ponuda knjiga. Ako u bazi podataka ne postoji ponuditelj koji nudi knjigu s odabranim značajkama na ekranu se ispisuje poruka da ne postoji registrirani ponuditelj koji nudi knjigu sa željenim značajkama.
+			
+			
+				\begin{figure}[H]
+					\includegraphics[width=\textwidth]{dijagrami/SequenceDiagram1.PNG} %veličina u odnosu na širinu linije
+					\centering
+					\caption{Sekvencijski dijagram za UC1}
+					\label{fig:seqdiag1}
+				\end{figure}
 				
-				\textbf{\textit{dio 1. revizije}}\\
-				
-				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
 				\eject
-	
+				
+			\subsubsection{Obrazac uporabe UC5 - Registracija}
+			Neregistrirani ponuditelj odabire opciju registracije. Na ekranu mu se prikazuje forma za registraciju ponuditelja. Ponuditelj unosi potrebne podatke za registraciju, a to su: vrsta ponuditelja(izdavač, antikvarijat, preprodavač), naziv, e-pošta, adresa i broj telefona. Ponuditelj šalje podatke za registraciju klikom na odgovarajuće dugme. Web aplikacija šalje podatke administratoru. Administrator pregledava podatke. Ako adresa antikvarijata nije u Republici Hrvatskoj administrator šalje poruku da adresa ne odgovara uvjetima. Web aplikacija onemogućava nastavak registracije i šalje poruku da adresa ne odgovara uvjetima. Ako adresa preprodavača nije u srodnoj zemlji jezika administrator šalje poruku da adresa ne odgovara uvjetima. Web aplikacija onemogućava nastavak registracije i šalje poruku ponuditelju da adresa ne odgovara uvjetima. Ako korisničko ime već postoji u sustavu administrator šalje poruku da ponuditelj treba izmijeniti korisničko ime. Web aplikacija onemogućava nastavak registracije i šalje poruku ponuditelju da promijeni korisničko ime. Ako su podatci ispravni, administrator šalje poruku da su podatci ispravni. Podatci se unose u bazu podataka. Web aplikacija šalje poruku ponuditelju da je njegova registracija uspješno izvršena.
+			
+			\eject
+			
+				\begin{figure}[H]
+					\includegraphics[width=\textwidth]{dijagrami/SequenceDiagram2.PNG} %veličina u odnosu na širinu linije
+					\centering
+					\caption{Sekvencijski dijagram za UC5}
+					\label{fig:seqdiag2}
+				\end{figure}
+			
+			\eject
+			
+			\subsubsection{Obrazac uporabe UC11 - Ponuda knjiga na hrvatskom jeziku od strane izdavača}
+			Izdavač provjerava ispravnost podataka knjige, to je njegova odgovornost. Nakon provjere podataka knjige, izdavač odabire opciju dodavanja knjige. Na ekranu mu se pokazuje forma za dodavanje knjige. Izdavač unosi značajke knjige i odabire dugme za dodavanje knjige. Web aplikacija šalje upit prema bazi podataka. U bazu podataka se sprema knjiga. Izdavač prima poruku da je njegova knjiga uspješno dodana.
+			
+			
+				\begin{figure}[H]
+					\includegraphics[width=\textwidth]{dijagrami/SequenceDiagram3.PNG} %veličina u odnosu na širinu linije
+					\centering
+					\caption{Sekvencijski dijagram za UC11}
+					\label{fig:seqdiag3}
+				\end{figure}
+			
+			\eject
+			
+			\subsubsection{Obrazac uporabe UC21 - Ispravak oznake novog primjerka pri uklanjanju}
+			Ponuditelj odabire primjerak knjige kojem želi ispraviti oznaku prije uklanjanja. Web aplikacija dohvaća podatke iz baze podataka i prikazuje ih ponuditelju. Ponuditelj odabire opciju promjene podataka klikom na dugme. Web aplikacija odobrava izmjenu podataka. Ponuditelj unosi izmijenjenu oznaku knjige i sprema ju klikom na dugme za spremanje podataka. Web aplikacija šalje upit i sprema izmijenjenu oznaku u bazu podataka. Ponuditelj odabire opciju uklanjanja knjige klikom na dugme. Web aplikacija mu šalje opciju u slučaju da je slučajno kliknuo na dugme za uklanjanje. Ponuditelj odabire opciju uklanjanja knjige klikom na dugme "Da". Web aplikacija šalje upit i uklanja primjerak knjige iz baze podataka. Ponuditelj prima poruku da je uklanjanje primjerka odabrane knjige uspješno izvršeno.
+			
+			\eject
+			
+				\begin{figure}[H]
+					\includegraphics[width=\textwidth]{dijagrami/SequenceDiagram4.PNG} %veličina u odnosu na širinu linije
+					\centering
+					\caption{Sekvencijski dijagram za UC21}
+					\label{fig:seqdiag4}
+				\end{figure}
+			
+			\eject
+			
 		\section{Ostali zahtjevi}
 		
 			\textbf{\textit{dio 1. revizije}}\\
