@@ -31,7 +31,9 @@ insert into Knjiga_dobavljivost values
 	('9789538318092', 'hrv');
 insert into Knjiga_dobavljivost values
 	('9789538318092', 'bih');
-	
+
+----
+
 insert into Ponuditelj values
 	('Znanje', 'lozinkaZnanje', 'Znanje', 'Gajeva ulica 1, 10000 Zagreb'
 	, 'znanje@email.com', '111111', (45.81307695382491, 15.976550894033364), 'Izdavač');
@@ -43,3 +45,21 @@ insert into Ponuditelj values
 insert into Ponuditelj values
 	(Huso, 'lozinkaHuso', 'Huso i sinovi d.o.o.', 'Sime Milutinovića Sarajlije 7, 71000 Srajevo'
 	, 'huso@email.com', '333333', (43.85814164463597, 18.42655700278929), 'Preprodavač');
+
+----
+
+insert into nudi values
+	('Znanje', '9789533607627', 50, 15.00);
+
+insert into nudi values
+	('Znanje', '9789533608167', 30, 12.50);
+
+insert into nudi values
+	('Jesenski i Turk', '9789538318092', 10, 5.00);
+	
+insert into nudi values
+	('Jesenski i Turk', '9789533608167', 5, 4.50);
+	
+insert into nudi values
+	('Jesenski i Turk', '9789538398285', 1, 5.00);
+	
