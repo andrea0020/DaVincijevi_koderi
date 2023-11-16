@@ -35,12 +35,47 @@
 						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
-					\hline \SetCell[c=3]{c}{\textbf{korisnik - ime tablice}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}IDKorisnik & INT	&  	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  	\\ \hline
-					korisnickoIme	& VARCHAR &   	\\ \hline 
-					email & VARCHAR &   \\ \hline 
-					ime & VARCHAR	&  		\\ \hline 
-					\SetCell{LightBlue} primjer	& VARCHAR &   	\\ \hline 
+					\hline \SetCell[c=3]{c}{\textbf{Knjiga}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}ISBN & VARCHAR(13) & \\ \hline
+					naslov	& VARCHAR & \\ \hline 
+					autori & VARCHAR &   \\ \hline 
+					jezik & CHAR(3)	& troslovni kod po ISO 639-1 standardu 	\\ \hline 
+					izdavač & VARCHAR & 	\\ \hline
+					brojIzdanja & INT & 	\\ \hline 
+					godinaIzdanja & INT & 	\\ \hline
+					katIzdavača & CHAR(3) & 	\\ \hline
+					zahtZaPr & INT & 	\\ \hline
+					očuvanost & VARCHAR & 	\\ \hline
+					opis & VARCHAR & 	\\ \hline
+					slika & BYTEA & 	\\ \hline
+					žanr & VARCHAR & 	\\ \hline
+					
+					\hline \SetCell[c=3]{c}{\textbf{Knjiga_dobavljivost}}	 \\ \hline[3pt]
+					\SetCell{LightBlue}ISBN & VARCHAR(13) & \\ \hline
+					dobavljivost & CHAR(3) & \\ \hline 
+					
+					\hline \SetCell[c=3]{c}{\textbf{Ponuditelj}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}korisničkoIme & VARCHAR(32) & \\ \hline
+					lozinka	& VARCHAR(32) &   	\\ \hline 
+					naziv & VARCHAR &   \\ \hline 
+					adresa & VARCHAR	&  		\\ \hline 
+					epošta & VARCHAR & 	\\ \hline
+					telefon & VARCHAR & 	\\ \hline 
+					godinaIzdanja & INT & 	\\ \hline
+					katIzdavača & CHAR(3) & 	\\ \hline
+					zahtZaPr & INT & 	\\ \hline
+					lokacija & POINT & 	\\ \hline
+					tip & VARCHAR & izdavač, antikvarijat, preprodavač	\\ \hline
+					
+					\hline \SetCell[c=3]{c}{\textbf{čekaOdobrenje}}	 \\ \hline[3pt]
+					\SetCell{LightBlue}korisničkoIme & VARCHAR(32) & \\ \hline
+					status & VARCHAR & \\ \hline 
+					
+					\hline \SetCell[c=3]{c}{\textbf{nudi}}	 \\ \hline[3pt]
+					\SetCell{LightBlue}naziv & VARCHAR & \\ \hline
+					\SetCell{LightBlue}ISBN & CHAR(13) &   	\\ \hline 
+					broj & INT &   \\ \hline 
+					cijena & DECIMAL(6, 2) & \\ \hline 
 				\end{longtblr}
 				
 				
