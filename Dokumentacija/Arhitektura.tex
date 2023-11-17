@@ -2,12 +2,14 @@
 		
 Da bismo razradili arhitekturu web aplikacije za poboljšanje dostupnosti knjiga prevedenih na hrvatski i srodne jezike, detaljnije ćemo opisati njene komponente, organizaciju i međusobnu komunikaciju. Evo ključnih elemenata:
 	\\
+	
+	\section{Komponente}
 
-        \textbf{1. Stil Arhitekture}\\
+        \subsubsection{Stil arhitekture}
         Stil arhitekture bi mogao biti mikroservisni ili slojeviti (npr. MVC - Model-View-Controller). Mikroservisni pristup omogućava modularnost i lako skaliranje, dok slojeviti pristup olakšava razvoj i održavanje. Prilikom razvoja naše aplikacije odabran je MVC model.
-        \\
         
-        \textbf{2. Podsustavi}\\
+        
+        \subsubsection{Podsustavi}
 
         Podsustavi se mogu podijeliti na:
         \begin{itemize}
@@ -18,7 +20,7 @@ Da bismo razradili arhitekturu web aplikacije za poboljšanje dostupnosti knjiga
              \item {Integracija vanjskih usluga: Za funkcionalnosti poput prikaza karte (npr. integracija OpenStreetMap).}		
 	   \end{itemize}
 
-        \textbf{3. Preslikavanje na Radnu Platformu}\\
+        \subsubsection{Preslikavanje na radnu platformu}
 
         Komponente se raspoređuju na servere i klijentske uređaje:
         \begin{itemize}
@@ -26,7 +28,7 @@ Da bismo razradili arhitekturu web aplikacije za poboljšanje dostupnosti knjiga
 		  \item {Klijent: Uređaji korisnika (mobiteli, tableti, računala) s web preglednikom za pristup UI.}
 	   \end{itemize}
     
-    \textbf{4. Spremišta Podataka}\\
+    \subsubsection{Spremišta podataka}
 
         Centralizirana baza podataka (SQL ili NoSQL) koja pohranjuje:
         \begin{itemize}
@@ -35,18 +37,18 @@ Da bismo razradili arhitekturu web aplikacije za poboljšanje dostupnosti knjiga
 		  \item {Zahtjeve za prijevod i ponude.}				
 	   \end{itemize}
 
-    \textbf{5. Mrežni Protokoli}\\
+    \subsubsection{Mrežni protokoli}
     
     \begin{itemize}
 		  \item {HTTP/HTTPS: Za komunikaciju između klijenta i servera.}
 		  \item {API protokoli (REST, GraphQL): Za upite i manipulaciju podacima.}
 	   \end{itemize}
 
-    \textbf{6. Globalni Upravljački Toke}\\
+    \subsubsection{Globalni upravljački token}
 
         Sustav bi koristio zahtjev-odgovor model za komunikaciju između klijenta i servera. Autentikacija i autorizacija korisnika odvijaju se na početku sesije.
     
-    \textbf{7. Sklopovsko-Programski Zahtjevi}\\
+    \subsubsection{Sklopovsko-programski zahtjevi}
 
     \begin{itemize}
 		  \item {Server: Pouzdan i skalabilan, s dovoljno resursa za obradu zahtjeva i pohranu podataka.}
@@ -83,8 +85,10 @@ Da bismo razradili arhitekturu web aplikacije za poboljšanje dostupnosti knjiga
 Izbor Model-View-Controller (MVC) arhitekture za ovu web aplikaciju temelji se na nekoliko ključnih principa oblikovanja koje sam uzimao u obzir:
 
 	\eject
+	
+	\section{Izbor arhitekture}
 
- \textbf{1. Separacija Briga (Separation of Concerns)}\\
+ 	\subsubsection{Separacija briga (Separation of concerns)}
 
 MVC arhitektura odlično odvaja različite aspekte aplikacije:
 \begin{itemize}
@@ -96,22 +100,22 @@ MVC arhitektura odlično odvaja različite aspekte aplikacije:
 Ova jasna podjela pomaže u organizaciji koda, olakšava održavanje i omogućava lakše testiranje pojedinih komponenti.
 	\\
 
- \textbf{2. Skalabilnost i Fleksibilnost}
+ \subsubsection{Skalabilnost i fleksibilnost}
 
 MVC podržava skalabilnost. Kako se aplikacija razvija, svaki dio (Model, View, Controller) može se neovisno skalirati ili modificirati. Ovo je posebno korisno za aplikacije koje imaju potencijal rasti, kao što je naš slučaj s web platformom za knjige.
 	\\
 
- \textbf{3. Podrška za Više Klijentskih Platformi}
+ \subsubsection{Podrška za više klijentskih platformi}
 
 S obzirom na to da se aplikacija mora prilagoditi različitim uređajima (mobilnim telefonima, tabletima, računalima), MVC omogućava razvoj različitih vrsta viewova koji mogu koristiti isti model i controller logiku. To znači da možemo imati različite korisničke sučelja za mobilne uređaje i desktop računala, dok se poslovna logika i obrada podataka ne mijenjaju.
 	\\
 
- \textbf{4. Održavanje i Nadogradnja}
+ \subsubsection{Održavanje i nadogradnja}
 
 MVC struktura pojednostavljuje ažuriranja i održavanje. Ako trebate promijeniti poslovnu logiku, to se može učiniti u modelu bez utjecaja na view. Slično, izmjene u korisničkom sučelju ne utječu na poslovnu logiku aplikacije.
 	\\
 	
- \textbf{5. Zajednica i Resursi}
+ \subsubsection{Zajednica i resursi}
 
 MVC je popularan i dobro dokumentiran arhitekturni obrazac. Postoji obilje resursa, biblioteka i okvira koji podržavaju MVC, što može značajno ubrzati razvoj i pružiti bolju podršku tijekom razvojnog procesa.
 
@@ -121,8 +125,10 @@ Zbog ovih razloga, MVC se čini kao optimalan izbor za arhitekturu ove web aplik
 Organizacija sustava za opisanu web aplikaciju s najviše razine apstrakcije može se podijeliti u četiri glavne komponente: klijent-poslužitelj model, baza podataka, datotečni sustav, i grafičko sučelje. Ove komponente zajedno omogućavaju funkcionalnost, skalabilnost i korisničku interakciju potrebnu za uspješan rad aplikacije.
 
 	\eject
+	
+	\section{Organizacija sustava}
 
- \textbf{1. Klijent-Poslužitelj Model} \\
+ \subsubsection{Klijent-poslužitelj model}
 
 U klijent-poslužitelj modelu, aplikacija je podijeljena na dva glavna dijela: klijent (front-end) koji se izvodi na korisničkom uređaju i poslužitelj (back-end) koji obrađuje zahtjeve i šalje odgovore.
 \begin{itemize}
@@ -132,7 +138,7 @@ U klijent-poslužitelj modelu, aplikacija je podijeljena na dva glavna dijela: k
 	   
 
 
- \textbf{2. Baza Podataka}
+ \subsubsection{Baza podataka}
 
 Baza podataka je središnje mjesto za pohranu svih podataka koji su relevantni za aplikaciju. Uključuje:
 \begin{itemize}
@@ -142,7 +148,7 @@ Baza podataka je središnje mjesto za pohranu svih podataka koji su relevantni z
 	   \end{itemize} 
 
 
- \textbf{3. Datotečni Sustav}
+ \subsubsection{Datotečni sustav}
 
 Datotečni sustav se koristi za pohranu i upravljanje datotekama koje nisu direktno povezane s bazom podataka, poput:
 \begin{itemize}
@@ -150,7 +156,7 @@ Datotečni sustav se koristi za pohranu i upravljanje datotekama koje nisu direk
 		  \item {Dokumenti: Uključujući priručnike, upute za korisnike, i druge dokumente.} \\
 	   \end{itemize} 
 
- \textbf{4. Grafičko Sučelje}
+ \subsubsection{Grafičko sučelje}
 
 Grafičko sučelje (GUI) je ono što korisnik vidi i s čime interagira. Uključuje:
 \begin{itemize}
@@ -162,9 +168,11 @@ Svaka od ovih komponenti igra ključnu ulogu u uspješnom funkcioniranju aplikac
 
 \eject
 
+\section{Organizacija aplikacije}
+
 Organizacija aplikacije koja koristi Model-View-Controller (MVC) arhitekturu s jasno definiranim frontend i backend slojevima omogućava efikasno upravljanje kodom i funkcionalnostima. Evo kako bi se to moglo strukturirati:
 
- \textbf{1. Frontend (Klijentska strana)}\\
+ \subsubsection{Frontend (klijentska strana)}
 
 Frontend je ono što korisnik vidi i s čime interagira. U MVC arhitekturi, to uglavnom obuhvaća "View" komponentu.
 \begin{itemize}
@@ -173,13 +181,13 @@ Frontend je ono što korisnik vidi i s čime interagira. U MVC arhitekturi, to u
     \begin{itemize}
 		  \item {Prikaz podataka: Dinamički prikazuje podatke dobivene s backend-a.}
 		  \item {Korisničko sučelje: Omogućava interakciju s korisnikom, prikuplja korisničke zahtjeve i šalje ih backend-u.}	
-            \item {Odgovor na korisničke akcije: Ažuriranje sučelja na temelju korisničkih interakcija i podataka s backend-a.}
+            \item {Odgovor na korisničke akcije: Ažuriranje sučelja na temelju korisničkih interakcija i podataka s backend-a.} \\
 	   \end{itemize}}	
             
 	   \end{itemize}
 
 
- \textbf{2. Backend (Poslužiteljska strana)}\\
+ \subsubsection{Backend (poslužiteljska strana)}
 
 Backend se bavi obradom podataka, poslovnom logikom i interakcijom s bazom podataka. U MVC arhitekturi, to uključuje "Model" i "Controller" komponente.
 \begin{itemize}
@@ -196,22 +204,22 @@ Backend se bavi obradom podataka, poslovnom logikom i interakcijom s bazom podat
                     \begin{itemize}
 		  \item {Predstavlja poslovnu logiku i podatke.}
 		  \item {Interakcija s bazom podataka.}	
-            \item {Obrada podataka (CRUD operacije - Create, Read, Update, Delete).}
+            \item {Obrada podataka (CRUD operacije - Create, Read, Update, Delete).} \\
 	   \end{itemize}}
 	   \end{itemize}}	
 	   \end{itemize}
 
 
- \textbf{3. Komunikacija između Frontend-a i Backend-a}\\
+ \subsubsection{Komunikacija između frontend-a i backend-a}
 
 Komunikacija između frontend-a i backend-a obično se odvija preko API-ja (Application Programming Interface), koristeći HTTP/HTTPS protokole.
 \begin{itemize}
 		  \item {API (najčešće REST ili GraphQL): Definira kako frontend šalje zahtjeve backend-u i kako backend vraća odgovore.}
-		  \item {JSON format: Često korišten format za slanje podataka između frontend-a i backend-a.}	
+		  \item {JSON format: Često korišten format za slanje podataka između frontend-a i backend-a.}	\\
 	   \end{itemize}
 
 
- \textbf{4. Baza Podataka}\\
+ \subsubsection{Baza podataka}
 
 Iako tehnički nije dio MVC strukture, baza podataka je ključna komponenta koja surađuje s Modelom. Ona pohranjuje sve podatke potrebne za aplikaciju.
 \begin{itemize}
@@ -309,13 +317,20 @@ U ovakvoj organizaciji, svaki sloj ima jasno definiranu ulogu, što doprinosi bo
 			\eject
 			
 			
-		\section{Dijagram razreda}
-		
-			\textit{Potrebno je priložiti dijagram razreda s pripadajućim opisom. Zbog preglednosti je moguće dijagram razlomiti na više njih, ali moraju biti grupirani prema sličnim razinama apstrakcije i srodnim funkcionalnostima.}\\
+		\section{Dijagram razreda} 
 			
-			\textbf{\textit{dio 1. revizije}}\\
+			Idejno razrađeni dijagram razreda opisuje strukturu web aplikacije. Uključuje ApplicationController za upravljanje zahtjevima vezanim uz navigaciju na web stranici, KorisnikController za obrađivanje korisničkih zahtjeva, LoginController za autentikaciju korisnika te Korisnik za predstavljanje entiteta korisnika. KorisnikService brine o logici poslovne logike vezane uz korisnike, dok KorisnikRepository predstavlja sučelje za pristup podacima korisnika u bazi podataka. StoZelisCitatiApplication predstavlja glavni razred aplikacije s main metodom za pokretanje, dok su veze između razreda usmjerene prema ovisnostima i suradnji između njih. Ovo omogućava bolje razumijevanje strukture aplikacije, odvojenost odgovornosti i međusobnu interakciju između komponenti. \\ \\
 			
-			\textit{Prilikom prve predaje projekta, potrebno je priložiti potpuno razrađen dijagram razreda vezan uz \textbf{generičku funkcionalnost} sustava. Ostale funkcionalnosti trebaju biti idejno razrađene u dijagramu sa sljedećim komponentama: nazivi razreda, nazivi metoda i vrste pristupa metodama (npr. javni, zaštićeni), nazivi atributa razreda, veze i odnosi između razreda.}\\
+				\begin{figure}[H]
+				\includegraphics[width=\textwidth]{dijagrami/ClassDiagram1.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Dijagram razreda}
+				\label{fig:razred1}
+			\end{figure}
+			
+			\eject
+			
+			
 			
 			\textbf{\textit{dio 2. revizije}}\\			
 			
