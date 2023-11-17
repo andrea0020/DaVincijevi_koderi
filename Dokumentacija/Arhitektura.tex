@@ -1,11 +1,11 @@
 \chapter{Arhitektura i dizajn sustava}
 		
-		\textbf{\textit{dio 1. revizije}}\\
 Da bismo razradili arhitekturu web aplikacije za poboljšanje dostupnosti knjiga prevedenih na hrvatski i srodne jezike, detaljnije ćemo opisati njene komponente, organizaciju i međusobnu komunikaciju. Evo ključnih elemenata:
-
+	\\
 
         \textbf{1. Stil Arhitekture}\\
         Stil arhitekture bi mogao biti mikroservisni ili slojeviti (npr. MVC - Model-View-Controller). Mikroservisni pristup omogućava modularnost i lako skaliranje, dok slojeviti pristup olakšava razvoj i održavanje. Prilikom razvoja naše aplikacije odabran je MVC model.
+        \\
         
         \textbf{2. Podsustavi}\\
 
@@ -52,15 +52,24 @@ Da bismo razradili arhitekturu web aplikacije za poboljšanje dostupnosti knjiga
 		  \item {Server: Pouzdan i skalabilan, s dovoljno resursa za obradu zahtjeva i pohranu podataka.}
 		  \item {Klijent: Kompatibilnost s modernim web preglednicima i prilagodljivost različitim veličinama ekrana.}			
 	   \end{itemize}
-	
-		
-
-		Skica 1: Osnovna Arhitektura
-
-    \begin{itemize}
-		  \item {Prikazuje raspored glavnih komponenti: UI, poslovna logika, baza podataka, autentikacija.}
-		  \item {Ilustrira komunikaciju između klijenta i servera.}			
+	   
+	   
+	   \begin{itemize}
+	   	\item {Prikazuje raspored glavnih komponenti: UI, poslovna logika, baza podataka, autentikacija.}
+	   	\item {Ilustrira komunikaciju između klijenta i servera.}			
 	   \end{itemize}
+	   
+		
+		\eject
+		
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{slike/arhitektura.PNG} %veličina u odnosu na širinu linije
+			\centering
+			\caption{Osnova arhitekture}
+			\label{fig5:promjene}
+		\end{figure}
+		
+		\eject
 	
   Skica ilustrira sljedeće komponente i njihovu međusobnu komunikaciju:
    \begin{itemize}
@@ -73,6 +82,8 @@ Da bismo razradili arhitekturu web aplikacije za poboljšanje dostupnosti knjiga
 
 Izbor Model-View-Controller (MVC) arhitekture za ovu web aplikaciju temelji se na nekoliko ključnih principa oblikovanja koje sam uzimao u obzir:
 
+	\eject
+
  \textbf{1. Separacija Briga (Separation of Concerns)}\\
 
 MVC arhitektura odlično odvaja različite aspekte aplikacije:
@@ -83,20 +94,24 @@ MVC arhitektura odlično odvaja različite aspekte aplikacije:
 	   \end{itemize}
 
 Ova jasna podjela pomaže u organizaciji koda, olakšava održavanje i omogućava lakše testiranje pojedinih komponenti.
+	\\
 
- \textbf{2. Skalabilnost i Fleksibilnost}\\
+ \textbf{2. Skalabilnost i Fleksibilnost}
 
 MVC podržava skalabilnost. Kako se aplikacija razvija, svaki dio (Model, View, Controller) može se neovisno skalirati ili modificirati. Ovo je posebno korisno za aplikacije koje imaju potencijal rasti, kao što je naš slučaj s web platformom za knjige.
+	\\
 
- \textbf{3. Podrška za Više Klijentskih Platformi}\\
+ \textbf{3. Podrška za Više Klijentskih Platformi}
 
 S obzirom na to da se aplikacija mora prilagoditi različitim uređajima (mobilnim telefonima, tabletima, računalima), MVC omogućava razvoj različitih vrsta viewova koji mogu koristiti isti model i controller logiku. To znači da možemo imati različite korisničke sučelja za mobilne uređaje i desktop računala, dok se poslovna logika i obrada podataka ne mijenjaju.
+	\\
 
- \textbf{4. Održavanje i Nadogradnja}\\
+ \textbf{4. Održavanje i Nadogradnja}
 
 MVC struktura pojednostavljuje ažuriranja i održavanje. Ako trebate promijeniti poslovnu logiku, to se može učiniti u modelu bez utjecaja na view. Slično, izmjene u korisničkom sučelju ne utječu na poslovnu logiku aplikacije.
-
- \textbf{5. Zajednica i Resursi}\\
+	\\
+	
+ \textbf{5. Zajednica i Resursi}
 
 MVC je popularan i dobro dokumentiran arhitekturni obrazac. Postoji obilje resursa, biblioteka i okvira koji podržavaju MVC, što može značajno ubrzati razvoj i pružiti bolju podršku tijekom razvojnog procesa.
 
@@ -105,44 +120,47 @@ Zbog ovih razloga, MVC se čini kao optimalan izbor za arhitekturu ove web aplik
 
 Organizacija sustava za opisanu web aplikaciju s najviše razine apstrakcije može se podijeliti u četiri glavne komponente: klijent-poslužitelj model, baza podataka, datotečni sustav, i grafičko sučelje. Ove komponente zajedno omogućavaju funkcionalnost, skalabilnost i korisničku interakciju potrebnu za uspješan rad aplikacije.
 
- \textbf{1. Klijent-Poslužitelj Model}\\
+	\eject
+
+ \textbf{1. Klijent-Poslužitelj Model} \\
 
 U klijent-poslužitelj modelu, aplikacija je podijeljena na dva glavna dijela: klijent (front-end) koji se izvodi na korisničkom uređaju i poslužitelj (back-end) koji obrađuje zahtjeve i šalje odgovore.
 \begin{itemize}
 		  \item {Klijent (Front-end): Koristi web preglednik ili mobilnu aplikaciju za pristup aplikaciji. Odgovoran je za prikupljanje korisničkih ulaza, prikazivanje podataka korisnicima i slanje zahtjeva poslužitelju.}
-		  \item {Poslužitelj (Back-end): Hostira aplikaciju, obrađuje zahtjeve, vrši operacije nad bazom podataka, i vraća rezultate klijentu. Također upravlja autentikacijom, autorizacijom, i sigurnošću.}	
+		  \item {Poslužitelj (Back-end): Hostira aplikaciju, obrađuje zahtjeve, vrši operacije nad bazom podataka, i vraća rezultate klijentu. Također upravlja autentikacijom, autorizacijom, i sigurnošću.}	\\
 	   \end{itemize}
+	   
 
 
- \textbf{2. Baza Podataka}\\
+ \textbf{2. Baza Podataka}
 
 Baza podataka je središnje mjesto za pohranu svih podataka koji su relevantni za aplikaciju. Uključuje:
 \begin{itemize}
 		  \item {Podatke o knjigama: Nazive, autore, žanrove, godine izdanja, itd.}
 		  \item {Korisničke podatke: Informacije o registriranim i neregistriranim korisnicima.}	
-            \item {Ponude i zahtjeve: Informacije o dostupnosti knjiga, ponuditeljima, i zahtjevima za prijevod.}
-	   \end{itemize}
+            \item {Ponude i zahtjeve: Informacije o dostupnosti knjiga, ponuditeljima, i zahtjevima za prijevod.} \\
+	   \end{itemize} 
 
 
- \textbf{3. Datotečni Sustav}\\
+ \textbf{3. Datotečni Sustav}
 
 Datotečni sustav se koristi za pohranu i upravljanje datotekama koje nisu direktno povezane s bazom podataka, poput:
 \begin{itemize}
 		  \item {Slika korica knjiga: Pohranjene kao datoteke koje se mogu prikazivati u korisničkom sučelju.}
-		  \item {Dokumenti: Uključujući priručnike, upute za korisnike, i druge dokumente.}
-	   \end{itemize}
+		  \item {Dokumenti: Uključujući priručnike, upute za korisnike, i druge dokumente.} \\
+	   \end{itemize} 
 
- \textbf{4. Grafičko Sučelje}\\
+ \textbf{4. Grafičko Sučelje}
 
 Grafičko sučelje (GUI) je ono što korisnik vidi i s čime interagira. Uključuje:
 \begin{itemize}
 		  \item {Web stranice: Dizajnirane za jednostavno korištenje i navigaciju, s funkcionalnostima kao što su pretraga, pregled knjiga, i slanje zahtjeva.}
-		  \item {Mobilno sučelje: Prilagođeno za manje ekrane i osjetljivo na dodir, s sličnim funkcionalnostima kao web verzija.}	
-	   \end{itemize}
+		  \item {Mobilno sučelje: Prilagođeno za manje ekrane i osjetljivo na dodir, s sličnim funkcionalnostima kao web verzija.}	\\
+	   \end{itemize} 
 
 Svaka od ovih komponenti igra ključnu ulogu u uspješnom funkcioniranju aplikacije, omogućujući efikasnu obradu podataka, intuitivnu korisničku interakciju i sigurnost informacija.
 
-
+\eject
 
 Organizacija aplikacije koja koristi Model-View-Controller (MVC) arhitekturu s jasno definiranim frontend i backend slojevima omogućava efikasno upravljanje kodom i funkcionalnostima. Evo kako bi se to moglo strukturirati:
 
@@ -203,19 +221,13 @@ Iako tehnički nije dio MVC strukture, baza podataka je ključna komponenta koja
 
 U ovakvoj organizaciji, svaki sloj ima jasno definiranu ulogu, što doprinosi boljem razumijevanju koda, lakšem održavanju i skaliranju aplikacije. Frontend i backend mogu se neovisno razvijati i optimizirati, što pruža fleksibilnost i efikasnost u razvojnom procesu.
 
-
+\eject
 
 				
 		\section{Baza podataka}
-			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-		\textit{Potrebno je opisati koju vrstu i implementaciju baze podataka ste odabrali, glavne komponente od kojih se sastoji i slično.}
+		
 		
 			\subsection{Opis tablica}
-			
-
-				\textit{Svaku tablicu je potrebno opisati po zadanom predlošku. Lijevo se nalazi točno ime varijable u bazi podataka, u sredini se nalazi tip podataka, a desno se nalazi opis varijable. Svjetlozelenom bojom označite primarni ključ. Svjetlo plavom označite strani ključ}
 				
 				
 				\begin{longtblr}[
@@ -239,11 +251,13 @@ U ovakvoj organizaciji, svaki sloj ima jasno definiranu ulogu, što doprinosi bo
 					očuvanost & VARCHAR & 	\\ \hline
 					opis & VARCHAR & 	\\ \hline
 					slika & BYTEA & 	\\ \hline
-					žanr & VARCHAR & 	\\ \hline
+					žanr & VARCHAR & 	
+					\\
 					
-					\hline \SetCell[c=3]{c}{\textbf{Knjiga_dobavljivost}}	 \\ \hline[3pt]
+					\hline \SetCell[c=3]{c}{\textbf{Knjiga dobavljivost}}	 \\ \hline[3pt]
 					\SetCell{LightBlue}ISBN & VARCHAR(13) & \\ \hline
-					dobavljivost & CHAR(3) & \\ \hline 
+					dobavljivost & CHAR(3) &
+					\\
 					
 					\hline \SetCell[c=3]{c}{\textbf{Ponuditelj}}	 \\ \hline[3pt]
 					\SetCell{LightGreen}korisničkoIme & VARCHAR(32) & \\ \hline
@@ -256,23 +270,41 @@ U ovakvoj organizaciji, svaki sloj ima jasno definiranu ulogu, što doprinosi bo
 					katIzdavača & CHAR(3) & 	\\ \hline
 					zahtZaPr & INT & 	\\ \hline
 					lokacija & POINT & 	\\ \hline
-					tip & VARCHAR & izdavač, antikvarijat, preprodavač	\\ \hline
+					tip & VARCHAR & izdavač, antikvarijat, preprodavač
+					\\
 					
 					\hline \SetCell[c=3]{c}{\textbf{čekaOdobrenje}}	 \\ \hline[3pt]
 					\SetCell{LightBlue}korisničkoIme & VARCHAR(32) & \\ \hline
-					status & VARCHAR & \\ \hline 
+					status & VARCHAR &
+					\\
 					
 					\hline \SetCell[c=3]{c}{\textbf{nudi}}	 \\ \hline[3pt]
 					\SetCell{LightBlue}naziv & VARCHAR & \\ \hline
 					\SetCell{LightBlue}ISBN & CHAR(13) &   	\\ \hline 
 					broj & INT &   \\ \hline 
 					cijena & DECIMAL(6, 2) & \\ \hline 
-				\end{longtblr}
+			   \end{longtblr}
 				
 				
 			
-			\subsection{Dijagram baze podataka}
-				\textit{ U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".}
+			\subsection{Dijagram baze podataka} 
+				
+				\begin{figure}[H]
+					\includegraphics[width=\textwidth]{dijagrami/baza_relmod_v2.PNG} %veličina u odnosu na širinu linije
+					\centering
+					\caption{REL dijagram baze podataka}
+					\label{fig:arh1}
+				\end{figure}
+				
+				\eject
+				
+				\begin{figure}[H]
+					\includegraphics[width=\textwidth]{dijagrami/baza_ERmod_v2.PNG} %veličina u odnosu na širinu linije
+					\centering
+					\caption{ER dijagram baze podataka}
+					\label{fig:arh2}
+				\end{figure}
+				
 			
 			\eject
 			
