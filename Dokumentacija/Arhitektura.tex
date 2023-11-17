@@ -8,6 +8,57 @@
 		\item 	\textit{organizaciju sustava s najviše razine apstrakcije (npr. klijent-poslužitelj, baza podataka, datotečni sustav, grafičko sučelje)}
 		\item 	\textit{organizaciju aplikacije (npr. slojevi frontend i backend, MVC arhitektura) }		
 	\end{itemize}
+ 	Da bismo razradili arhitekturu web aplikacije za poboljšanje dostupnosti knjiga prevedenih na hrvatski i srodne jezike, detaljnije ćemo opisati njene komponente, organizaciju i međusobnu komunikaciju. Evo ključnih elemenata:
+
+
+        \textbf{1. Stil Arhitekture}\\
+        Stil arhitekture bi mogao biti mikroservisni ili slojeviti (npr. MVC - Model-View-Controller). Mikroservisni pristup omogućava modularnost i lako skaliranje, dok slojeviti pristup olakšava razvoj i održavanje. Prilikom razvoja naše aplikacije odabran je MVC model.
+        
+        \textbf{2. Podsustavi}\\
+
+        Podsustavi se mogu podijeliti na:
+        \begin{itemize}
+		  \item {Korisničko sučelje (UI): Front-end komponenta zadužena za interakciju s korisnicima.}
+		  \item {Poslovna logika: Središnji dio koji upravlja funkcionalnostima aplikacije.}
+		  \item {Baza podataka: Spremište podataka gdje se čuvaju informacije o knjigama, korisnicima, ponuditeljima, itd.}		
+            \item {Autentikacija i autorizacija: Sustav za upravljanje korisničkim pristupima i ovlastima.}	
+             \item {Integracija vanjskih usluga: Za funkcionalnosti poput prikaza karte (npr. integracija OpenStreetMap).}		
+	   \end{itemize}
+
+        \textbf{3. Preslikavanje na Radnu Platformu}\\
+
+        Komponente se raspoređuju na servere i klijentske uređaje:
+        \begin{itemize}
+		  \item {Server: Hostira poslovnu logiku, bazu podataka, autentikaciju i API za integraciju vanjskih usluga.}
+		  \item {Klijent: Uređaji korisnika (mobiteli, tableti, računala) s web preglednikom za pristup UI.}
+	   \end{itemize}
+    
+    \textbf{4. Spremišta Podataka}\\
+
+        Centralizirana baza podataka (SQL ili NoSQL) koja pohranjuje:
+        \begin{itemize}
+		  \item {Podatke o knjigama.}
+		  \item {Informacije o korisnicima i ponuditeljima.}
+		  \item {Zahtjeve za prijevod i ponude.}				
+	   \end{itemize}
+
+    \textbf{5. Mrežni Protokoli}\\
+    
+    \begin{itemize}
+		  \item {HTTP/HTTPS: Za komunikaciju između klijenta i servera.}
+		  \item {API protokoli (REST, GraphQL): Za upite i manipulaciju podacima.}
+	   \end{itemize}
+
+    \textbf{6. Globalni Upravljački Toke}\\
+
+        Sustav bi koristio zahtjev-odgovor model za komunikaciju između klijenta i servera. Autentikacija i autorizacija korisnika odvijaju se na početku sesije.
+    
+    \textbf{7. Sklopovsko-Programski Zahtjevi}\\
+
+    \begin{itemize}
+		  \item {Server: Pouzdan i skalabilan, s dovoljno resursa za obradu zahtjeva i pohranu podataka.}
+		  \item {Klijent: Kompatibilnost s modernim web preglednicima i prilagodljivost različitim veličinama ekrana.}			
+	   \end{itemize}
 
 	
 		
