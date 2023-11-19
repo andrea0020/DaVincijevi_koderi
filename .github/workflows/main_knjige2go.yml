@@ -50,4 +50,4 @@ jobs:
           app-name: 'Knjige2Go'
           slot-name: 'Production'
           package: '*.jar'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_97BFADA35DA443D6B1B77F7CE360CEAA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_65BC2323D31545C5B2FE027156EBFB87 }}
