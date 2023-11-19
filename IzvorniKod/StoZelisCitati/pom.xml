@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.5</version>
+		<version>2.5.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.projektProgi</groupId>
@@ -15,7 +15,6 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>8</java.version>
-		<maven.compiler.release>8</maven.compiler.release>
 	</properties>
 	<dependencies>
 
@@ -59,10 +58,14 @@
 			<plugin>
             			<groupId>org.apache.maven.plugins</groupId>
             			<artifactId>maven-compiler-plugin</artifactId>
-            			<version>3.8.1</version> <!-- Use a compatible version for Java 8 -->
+            			<version>3.8.1</version>
             			<configuration>
-              			  	<source>1.8</source> <!-- Java version compatibility -->
-                			<target>1.8</target> <!-- Java version compatibility -->
+			                <source>1.8</source>
+                			<target>1.8</target>
+                			<compilerArgs>
+                    			<!-- Remove all inherited compiler arguments -->
+                    			<compilerArg>-Xlint:all</compilerArg>
+                			</compilerArgs>
             			</configuration>
         		</plugin>
 			<plugin>
