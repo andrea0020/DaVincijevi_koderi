@@ -16,8 +16,8 @@ public class KorisnikService {
         this.korisnikRepository = korisnikRepository;
     }
 
-    public void saveKorisnik(Korisnik korisnik){
-        korisnikRepository.save(korisnik);
+    public Korisnik saveKorisnik(Korisnik korisnik){
+        return korisnikRepository.save(korisnik);
     }
 
     public List<Korisnik> GetSviKorisnici(){
