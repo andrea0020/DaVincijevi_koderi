@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { VITE_API_URL } from "../../utils/constants";
 
 const options = [
    { value: 'antikvarijat', name: "Antikvarijat"},
@@ -34,7 +35,7 @@ export function RegisterForm() {
         tip: type
     }
 
-    const response = await fetch("http://localhost:8080/register", {
+    const response = await fetch(VITE_API_URL + "/register", {
         method: "post",
         headers: {
             "Content-Type": "application/json"

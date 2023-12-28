@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-
+import { VITE_API_URL } from "../../utils/constants"
 
 export function LoginForm() {
   const navigate = useNavigate()
@@ -16,7 +16,7 @@ export function LoginForm() {
       password: password
     }
 
-    const response = await fetch("http://localhost:8080/login", {
+    const response = await fetch(VITE_API_URL + "/login", {
       method: "post",
       body: JSON.stringify(loginDto),
       headers: {
