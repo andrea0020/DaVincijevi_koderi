@@ -1,14 +1,40 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 export function LoginForm() {
-
+  const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitted", username, password)
+
+    const loginDto = {
+      username: username,
+      password: password
+    }
+
+    const response = await fetch("http://localhost:8080/login", {
+      method: "post",
+      body: JSON.stringify(loginDto),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+
+    if (response.status === 200) {
+      const data = await response.json()
+      const role = data.role; // "Admin" or "User"
+      if (role === "Admin") { 
+        navigate("/admin")
+      } else {
+        navigate("/")
+      }
+    } else {
+      console.log("Invalid username or password")
+    }
   }
 
   return (
