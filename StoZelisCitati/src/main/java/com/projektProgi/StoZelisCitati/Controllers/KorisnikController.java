@@ -1,13 +1,20 @@
 package com.projektProgi.StoZelisCitati.Controllers;
 
 import com.projektProgi.StoZelisCitati.models.Korisnik;
+import com.projektProgi.StoZelisCitati.models.KorisnikDto;
+import com.projektProgi.StoZelisCitati.models.LoginDto;
+import com.projektProgi.StoZelisCitati.models.LoginResponseDto;
 import com.projektProgi.StoZelisCitati.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,49 +27,41 @@ public class KorisnikController {
         this.korisnikService = korisnikService;
     }
 
-
-
     @PostMapping("/register")
-    public String processData(@RequestParam("naziv") String naziv,
-                              @RequestParam("adresa") String adresa,
-                              @RequestParam("telefon") String telefon,
-                              @RequestParam("email") String email,
-                              @RequestParam("tip") String tip){
-
-
-
+    public ResponseEntity<Void> registerUser(@RequestBody KorisnikDto korisnikDto) throws URISyntaxException {
         Korisnik korisnik = new Korisnik();
-        korisnik.setNaziv(naziv);
-        korisnik.setAdresa(adresa);
-        korisnik.setTelefon(telefon);
-        korisnik.setEpošta(email);
-        korisnik.setTip(tip);
-        korisnik.setId(korisnik.getId());
-        korisnik.setOdobren("True");
-        korisnik.setSifra("sifraod" + korisnik.getNaziv());
-        korisnik.setUsername("usernameOd" + korisnik.getNaziv());
-        korisnik.setURLL("/korisnik" + korisnik.getId());
 
-        korisnikService.saveKorisnik(korisnik);
-        return "redirect:/login";
+        korisnik.setNaziv(korisnikDto.getNaziv());
+        korisnik.setAdresa(korisnikDto.getAdresa());
+        korisnik.setTelefon(korisnikDto.getTelefon());
+        korisnik.setEpošta(korisnikDto.getEpošta());
+        korisnik.setTip(korisnikDto.getTip());
+        korisnik.setOdobren("True");
+        korisnik.setSifra(korisnikDto.getSifra()); // we should encrypt this
+        korisnik.setUsername(korisnikDto.getUsername());
+
+        korisnik = korisnikService.saveKorisnik(korisnik);
+
+        return ResponseEntity.created(new URI("/user/" + korisnik.getId())).build();
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponseDto> loginUser(@RequestBody LoginDto loginDto)  {
+        LoginResponseDto dto = new LoginResponseDto();
+        List<Korisnik> korisnici = korisnikService.GetSviKorisnici();
 
-    /*@PostMapping("/login")
-    public String processLogin(@RequestParam("username") String username,
-                                   @RequestParam("sifra") String sifra){
-    String pomocni = "login";
-        List<Korisnik> listaKorisnika = korisnikService.GetSviKorisnici();
-        for(int i = 0; i < listaKorisnika.size();i++){
-            if(username.equals(listaKorisnika.get(i).getUsername()) && username.equals((listaKorisnika.get(i).getUsername()))){
-                pomocni = "redirect:/home";
-            } else {
-                pomocni = "login";
+        if (loginDto.getUsername().equals("AdminStranice") && loginDto.getPassword().equals("adminovasifra")) {
+            dto.setRole("Admin");
+            return ResponseEntity.ok(dto);
+        }
+
+        for (int i = 0; i < korisnici.size(); i++) {
+            if (loginDto.getUsername().equals(korisnici.get(i).getUsername()) && loginDto.getPassword().equals(korisnici.get(i).getSifra())) {
+                dto.setRole("User"); // change this to all 3 roles
+                return ResponseEntity.ok(dto);
             }
         }
-        return  pomocni;
-        }*/
 
-
-
+        return ResponseEntity.badRequest().build();
+    }
 }
