@@ -7,6 +7,8 @@ This project is based on React.
 ```bash
 cd frontend
 
+cp .env.example .env
+
 npm run install
 
 npm run dev
