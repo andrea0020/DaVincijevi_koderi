@@ -20,6 +20,10 @@ export function RegisterForm() {
    const [email, setEmail] = useState('');
    const [type, setType] = useState(options[0].value);
 
+   const showAlert = () => {
+    window.alert('Zahtjev za obradu registracije je uspješno poslan adminu');
+  };
+
    const handleSubmit = async (e) => {
       e.preventDefault();
       console.log("Submitted")
@@ -55,28 +59,28 @@ export function RegisterForm() {
       <form onSubmit={handleSubmit}>
         <h2>Register</h2>
         <div className="input-group">
-            <label htmlFor="username">username</label>
-            <input type="text" id="username" name="username" required value={username} onChange={(e) => setUsername(e.target.value)}/>
+            <label htmlFor="username">Username</label>
+            <input type="text" id="username" name="username" required placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} style={{ fontSize: '11px' }}/>
         </div>
         <div className="input-group">
-            <label htmlFor="password">šifra</label>
-            <input type="text" id="password" name="password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <label htmlFor="password">Password</label>
+            <input type="text" id="password" name="password" required placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} style={{ fontSize: '11px' }}/>
         </div>
         <div className="input-group">
-            <label htmlFor="naziv">naziv</label>
-            <input type="text" id="naziv" name="naziv" required value={name} onChange={(e) => setName(e.target.value)}/>
+            <label htmlFor="naziv">Naziv</label>
+            <input type="text" id="naziv" name="naziv" required placeholder='Naziv' value={name} onChange={(e) => setName(e.target.value)} style={{ fontSize: '11px' }}/>
         </div>
         <div className="input-group">
-            <label htmlFor="adresa">adresa</label>
-            <input type="text" id="adresa" name="adresa" required value={address} onChange={(e) => setAddress(e.target.value)}/>
+            <label htmlFor="adresa">Adresa</label>
+            <input type="text" id="adresa" name="adresa" required placeholder='Adresa' value={address} onChange={(e) => setAddress(e.target.value)} style={{ fontSize: '11px' }}/>
         </div>
         <div className="input-group">
-            <label htmlFor="telefon">telefon</label>
-            <input type="text" id="telefon" name="telefon" required value={telephone} onChange={(e) => setTelephone(e.target.value)}/>
+            <label htmlFor="telefon">Telefon</label>
+            <input type="text" id="telefon" name="telefon" required placeholder='Telefon' value={telephone} onChange={(e) => setTelephone(e.target.value)} style={{ fontSize: '11px' }}/>
         </div>
         <div className="input-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <input type="email" id="email" name="email" required placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} style={{ fontSize: '11px' }}/>
         </div>
         <div className="input-group">
             <label htmlFor="tip">Odaberi tip ponuditelja</label>
@@ -87,7 +91,7 @@ export function RegisterForm() {
             </select >
         </div>
 
-        <button type="submit">Register</button>
+        <button type="submit" onClick={showAlert}>Register</button>
         <p className="login-link">Already have an account? <a href="/login">Login</a></p>
     </form>
    )

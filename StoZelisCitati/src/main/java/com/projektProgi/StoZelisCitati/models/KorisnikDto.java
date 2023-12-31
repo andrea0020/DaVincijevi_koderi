@@ -1,7 +1,7 @@
 package com.projektProgi.StoZelisCitati.models;
 
 public class KorisnikDto {
-    private String sifra, username, naziv, adresa, epošta, telefon, tip;
+    private String password, username, naziv, adresa, email, telefon, tip;
 
     public KorisnikDto() {
     }
@@ -22,12 +22,12 @@ public class KorisnikDto {
         this.adresa = adresa;
     }
 
-    public String getEpošta() {
-        return epošta;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEpošta(String epošta) {
-        this.epošta = epošta;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelefon() {
@@ -54,12 +54,12 @@ public class KorisnikDto {
         this.username = username;
     }
 
-    public String getSifra() {
-        return sifra;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSifra(String sifra) {
-        this.sifra = sifra;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 

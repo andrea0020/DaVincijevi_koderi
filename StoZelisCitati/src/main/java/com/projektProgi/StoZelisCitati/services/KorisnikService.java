@@ -24,14 +24,23 @@ public class KorisnikService {
         return korisnikRepository.findAll();
     }
 
-
+/*
     public void updateOdobrenje(){
         List<Korisnik> listaKorisnika = korisnikRepository.findAll();
         for(int i = 0; i < listaKorisnika.size(); i++){
             listaKorisnika.get(i).setOdobren("True");
         }
-    }
+    }*/
 
+    public void approveUser(Long userId) {
+        Korisnik korisnik = korisnikRepository.findById(userId).orElseThrow();
+        korisnik.setOdobren(true);
+        korisnikRepository.save(korisnik);
+    }
+/*
+    public void deleteUser(Long userId) {
+        korisnikRepository.deleteById(userId);
+    }*/
 
 }
 

@@ -8,17 +8,15 @@ import com.projektProgi.StoZelisCitati.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 public class KorisnikController {
     private final KorisnikService korisnikService;
 
@@ -34,10 +32,10 @@ public class KorisnikController {
         korisnik.setNaziv(korisnikDto.getNaziv());
         korisnik.setAdresa(korisnikDto.getAdresa());
         korisnik.setTelefon(korisnikDto.getTelefon());
-        korisnik.setEpošta(korisnikDto.getEpošta());
+        korisnik.setEmail(korisnikDto.getEmail());
         korisnik.setTip(korisnikDto.getTip());
-        korisnik.setOdobren("True");
-        korisnik.setSifra(korisnikDto.getSifra()); // we should encrypt this
+        korisnik.setOdobren(false);
+        korisnik.setPassword(korisnikDto.getPassword()); // we should encrypt this
         korisnik.setUsername(korisnikDto.getUsername());
 
         korisnik = korisnikService.saveKorisnik(korisnik);
@@ -56,7 +54,7 @@ public class KorisnikController {
         }
 
         for (int i = 0; i < korisnici.size(); i++) {
-            if (loginDto.getUsername().equals(korisnici.get(i).getUsername()) && loginDto.getPassword().equals(korisnici.get(i).getSifra())) {
+            if (loginDto.getUsername().equals(korisnici.get(i).getUsername()) && loginDto.getPassword().equals(korisnici.get(i).getPassword())) {
                 dto.setRole("User"); // change this to all 3 roles
                 return ResponseEntity.ok(dto);
             }
@@ -64,4 +62,22 @@ public class KorisnikController {
 
         return ResponseEntity.badRequest().build();
     }
+
+    @GetMapping("/users")
+    public List<Korisnik> getUsers() {
+        return this.korisnikService.GetSviKorisnici();
+    }
+
+    @PostMapping("/users/{userId}/approve")
+    public ResponseEntity<String> approveUser(@PathVariable Long userId) {
+        korisnikService.approveUser(userId);
+        return ResponseEntity.ok("User approved");
+    }
+
+    /*@DeleteMapping("/users/{userId}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
+        korisnikService.deleteUser(userId);
+        return ResponseEntity.ok().build();
+    }*/
+
 }
