@@ -16,7 +16,7 @@ class KorisnikRepositoryTest {
         Korisnik korisnik = new Korisnik();
         korisnik.setId(1l);
         korisnik.setTip("preprodavac");
-        korisnik.setEpošta("stevo@mail.com");
+        korisnik.setEmail("stevo@mail.com");
         korisnik.setTelefon("063450521");
         korisnik.setNaziv("Stevo&co");
         korisnik.setAdresa("pod bedemom 2");

@@ -8,13 +8,20 @@
 .container{
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/images/page_wallpaper.jpg");
-
-
-  
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/images/homepage.jpg");
   background-position: center;
   background-size: cover;
+  color: white
   }   
+
+button {
+  padding: 5px 5px;
+  margin: 3px;
+  border: 2px solid black;
+  background-color: bisque;
+  color: black;
+  cursor: pointer;
+}
 
   
 .navbar{

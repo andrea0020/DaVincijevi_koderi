@@ -6,8 +6,6 @@ public class LoginResponseDto {
     public LoginResponseDto() {
     }
 
-
-
     public String getRole() {
         return role;
     }

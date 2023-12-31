@@ -14,12 +14,11 @@ public class Korisnik {
     private Long id;
 
     private String username ="";
-    private String sifra = "";
+    private String password = "";
     private String URLL = "";
-    private String odobren;
+    private boolean odobren;
+    private String naziv, adresa, email, telefon, tip;
 
-
-    private String naziv;
 
     public Long getId() {
         return id;
@@ -45,12 +44,12 @@ public class Korisnik {
         this.adresa = adresa;
     }
 
-    public String getEpošta() {
-        return epošta;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEpošta(String epošta) {
-        this.epošta = epošta;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelefon() {
@@ -77,12 +76,12 @@ public class Korisnik {
         this.username = username;
     }
 
-    public String getSifra() {
-        return sifra;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSifra(String sifra) {
-        this.sifra = sifra;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getURLL() {
@@ -93,19 +92,11 @@ public class Korisnik {
         this.URLL = URLL;
     }
 
-    public String getOdobren() {
+    public boolean getOdobren() {
         return odobren;
     }
 
-    public void setOdobren(String odobren) {
+    public void setOdobren(boolean odobren) {
         this.odobren = odobren;
     }
-
-    private String adresa;
-    private String epošta;
-    private String telefon;
-    private String tip;
-
-
-
 }
