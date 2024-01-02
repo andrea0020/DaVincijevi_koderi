@@ -37,19 +37,23 @@ export function LoginForm() {
     }
   }
 
+  const showAlert = () => {
+    window.alert('Potrebno je sačekati odobravanje registracije od strane admina');
+  };
+
   return (
       <div>
         <form onSubmit={handleSubmit}>
         <h2>Login</h2>
         <div className="input-group">
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" name="username" required placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" id="username" name="username" required placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} style={{ fontSize: '11px' }}/>
         </div>
         <div className="input-group">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" required placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" id="password" name="password" required placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} style={{ fontSize: '11px' }} />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" onClick={showAlert}>Login</button>
         <p className="signup-link">Don't have an account? <a href="/register">Sign up</a></p>
     </form>
 

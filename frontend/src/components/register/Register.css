@@ -20,20 +20,21 @@
 /* Styling for the form inside the register-container */
 .register-container form {
    width: 300px;
+   height: 90vh;
    padding: 20px;
    background-color: rgba(255, 255, 255, 0.8);
    border-radius: 10px;
-   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .register-container h2 {
    text-align: center;
    color: #333;
-   margin-bottom: 20px;
+   margin-bottom: 5px;
 }
 
 .input-group {
-   margin-bottom: 15px;
+   margin-bottom: 5px;
 }
 
 .input-group label {
@@ -44,7 +45,7 @@
 
 .input-group input {
    width: 100%;
-   padding: 10px;
+   padding: 7px;
    border: 1px solid #ddd;
    border-radius: 5px;
    box-sizing: border-box;
@@ -68,7 +69,7 @@
 /* Styling for the link back to login page */
 .login-link {
    text-align: center;
-   margin-top: 10px;
+   margin-top: 20px;
 }
 
 .login-link a {
