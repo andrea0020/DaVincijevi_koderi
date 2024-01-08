@@ -1,0 +1,18 @@
+/* SearchButton.css */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set height to 100% of the viewport height for centering vertically */
+  }
+  
+  input {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+  }

@@ -23,6 +23,20 @@ button {
   cursor: pointer;
 }
 
+.SearchButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Match the background color of the container */
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+}
+
   
 .navbar{
       height: 12%;
