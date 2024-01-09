@@ -29,7 +29,6 @@ export function AdminForm() {
       }
    };
 
-   /*
    const handleDelete = async (userId) => {
       const response = await fetch(`${VITE_API_URL}/users/${userId}`, 
       {
@@ -40,7 +39,7 @@ export function AdminForm() {
        } else {
          console.error("Failed to delete user");
        }
-   }*/
+   }
 
    const handleToggleUsers = () => {
       setShowUsers((prevShowUsers) => !prevShowUsers);
@@ -64,6 +63,7 @@ export function AdminForm() {
                            <button key={user.id} onClick={() => handleApprove(user.id)} style={{ marginTop: '20px' }} >Odobri</button> ) : 
                            <span style={{ border: '1px solid #ccc', padding: '1px', borderRadius: '1px', marginLeft: '10px', borderColor: 'gray', fontSize: '13px' }} >odobren</span> 
                         }
+                        <button key={user.id} onClick={() => handleDelete(user.id)} style={{ marginTop: '20px' }} >Obriši</button>
                      </div>
                   ))}
                </ul>

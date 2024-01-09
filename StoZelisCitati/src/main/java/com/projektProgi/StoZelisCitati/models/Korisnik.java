@@ -1,7 +1,10 @@
 package com.projektProgi.StoZelisCitati.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 
@@ -19,6 +22,21 @@ public class Korisnik {
     private boolean odobren;
     private String naziv, adresa, email, telefon, tip;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "korisnik")
+    private List<Ponuda> ponude;
+
+    public List<Ponuda> getPonude() {
+        return ponude;
+    }
+
+    public void setPonude(List<Ponuda> ponude) {
+        this.ponude = ponude;
+    }
+
+    public boolean isOdobren() {
+        return odobren;
+    }
 
     public Long getId() {
         return id;

@@ -10,6 +10,9 @@ import {
 import { LoginPage } from './components/login/LoginPage.jsx';
 import { RegisterPage } from './components/register/RegisterPage.jsx';
 import { AdminPage } from './components/admin/AdminPage.jsx';
+import { UserPage } from './components/user/UserPage.jsx';
+import { OfferPage } from './components/offer/OfferPage.jsx';
+import { BookPage } from './components/book/BookPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,18 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminPage />,
+  },
+  {
+    path: "/user",
+    element: <UserPage />,
+  },
+  {
+    path: "/book/:bookId/offer",
+    element: <OfferPage />,
+  },
+  {
+    path: "/book",
+    element: <BookPage />,
   },
 ]);
 

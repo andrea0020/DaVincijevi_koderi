@@ -26,20 +26,20 @@ export function LoginForm() {
 
     if (response.status === 200) {
       const data = await response.json()
+      console.log(data)
       const role = data.role; // "Admin" or "User"
       if (role === "Admin") { 
         navigate("/admin")
       } else {
-        navigate("/")
+        const userId = data.korisnikId;
+        console.log(userId)
+        localStorage.setItem("userId", userId);
+        navigate("/user")
       }
     } else {
       console.log("Invalid username or password")
     }
   }
-
-  const showAlert = () => {
-    window.alert('Potrebno je sačekati odobravanje registracije od strane admina');
-  };
 
   return (
       <div>
@@ -53,7 +53,7 @@ export function LoginForm() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" required placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} style={{ fontSize: '11px' }} />
         </div>
-        <button type="submit" onClick={showAlert}>Login</button>
+        <button type="submit" >Login</button>
         <p className="signup-link">Don't have an account? <a href="/register">Sign up</a></p>
     </form>
 
