@@ -1,0 +1,85 @@
+* {
+   margin: 0;
+   padding: 0;
+   font-family: 'Roboto', sans-serif;
+   background-color: transparent;
+}
+
+/* Container for the registration form */
+.register-container {
+   width: 100%;
+   height: 100vh;
+   background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(pics/page_wallpaper.jpg);
+   background-position: center;
+   background-size: cover;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+/* Styling for the form inside the register-container */
+.register-container form {
+   width: 300px;
+   height: 90vh;
+   padding: 10px;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.register-container h2 {
+   text-align: center;
+   color: #333;
+   margin-bottom: 5px;
+}
+
+.input-group {
+   margin-bottom: 5px;
+}
+
+.input-group label {
+   display: block;
+   margin-bottom: 5px;
+   color: #666;
+}
+
+.input-group input {
+   width: 100%;
+   padding: 7px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   box-sizing: border-box;
+}
+
+/* Styling for the submit button */
+.register-container button {
+   padding: 10px 15px;
+   border: none;
+   border-radius: 5px;
+   background-color: #efc199;
+   color: white;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.register-container button:hover {
+   background-color: #cb8f76;
+}
+
+/* Styling for the link back to login page */
+.login-link {
+   text-align: center;
+   margin-top: 20px;
+}
+
+.login-link a {
+   color: #efc199;
+   text-decoration: none;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 600px) {
+   .register-container form {
+       width: 90%;
+   }
+}

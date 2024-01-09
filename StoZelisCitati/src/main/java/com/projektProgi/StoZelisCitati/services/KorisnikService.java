@@ -24,6 +24,10 @@ public class KorisnikService {
         return korisnikRepository.findAll();
     }
 
+    public Korisnik getUserById(Long userId) {
+        return korisnikRepository.findById(userId).orElseThrow();
+    }
+
 /*
     public void updateOdobrenje(){
         List<Korisnik> listaKorisnika = korisnikRepository.findAll();
@@ -37,10 +41,10 @@ public class KorisnikService {
         korisnik.setOdobren(true);
         korisnikRepository.save(korisnik);
     }
-/*
+
     public void deleteUser(Long userId) {
         korisnikRepository.deleteById(userId);
-    }*/
+    }
 
 }
 

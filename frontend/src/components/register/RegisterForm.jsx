@@ -30,11 +30,11 @@ export function RegisterForm() {
       console.log(name, address, telephone, email, type)
 
     const registerDto = {
-        sifra: password,
+        password: password,
         username: username,
         naziv: name, 
         adresa: address, 
-        epošta: email,
+        email: email,
         telefon: telephone,
         tip: type
     }
