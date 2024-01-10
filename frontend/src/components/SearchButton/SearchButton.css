@@ -1,14 +1,14 @@
-/* SearchButton.css */
-.search-container {
+.SearchButton {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Set height to 100% of the viewport height for centering vertically */
+    margin-top: 20px; /* Adjust the margin as needed */
   }
   
   input {
     padding: 8px;
     font-size: 16px;
+    margin-right: 8px; /* Add margin between input and button */
   }
   
   button {
