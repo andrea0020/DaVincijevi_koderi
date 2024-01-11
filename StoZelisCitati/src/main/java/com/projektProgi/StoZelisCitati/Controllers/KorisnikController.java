@@ -51,6 +51,7 @@ public class KorisnikController {
 
         if (loginDto.getUsername().equals("AdminStranice") && loginDto.getPassword().equals("adminovasifra")) {
             dto.setRole("Admin");
+            dto.setOdobren(true);
             return ResponseEntity.ok(dto);
         }
 
@@ -58,6 +59,7 @@ public class KorisnikController {
             if (loginDto.getUsername().equals(korisnici.get(i).getUsername()) && loginDto.getPassword().equals(korisnici.get(i).getPassword())) {
                 dto.setRole("User"); // change this to all 3 roles
                 dto.setKorisnikId(korisnici.get(i).getId());
+                dto.setOdobren(korisnici.get(i).getOdobren());
                 return ResponseEntity.ok(dto);
             }
         }

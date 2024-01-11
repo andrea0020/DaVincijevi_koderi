@@ -60,7 +60,7 @@ export function AdminForm() {
                            {user.naziv} -
                         </span>
                         { user.odobren === false ? (
-                           <button key={user.id} onClick={() => handleApprove(user.id)} style={{ marginTop: '20px' }} >Odobri</button> ) : 
+                           <button key={user.id} onClick={() => handleApprove(user.id)} style={{ marginTop: '20px' }}  >Odobri</button> ) : 
                            <span style={{ border: '1px solid #ccc', padding: '1px', borderRadius: '1px', marginLeft: '10px', borderColor: 'gray', fontSize: '13px' }} >odobren</span> 
                         }
                         <button key={user.id} onClick={() => handleDelete(user.id)} style={{ marginTop: '20px' }} >Obriši</button>

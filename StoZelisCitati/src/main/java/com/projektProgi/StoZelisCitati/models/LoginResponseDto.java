@@ -3,8 +3,17 @@ package com.projektProgi.StoZelisCitati.models;
 public class LoginResponseDto {
     private String role;
     private Long korisnikId;
+    private boolean odobren;
 
     public LoginResponseDto() {
+    }
+
+    public boolean isOdobren() {
+        return odobren;
+    }
+
+    public void setOdobren(boolean odobren) {
+        this.odobren = odobren;
     }
 
     public Long getKorisnikId() {

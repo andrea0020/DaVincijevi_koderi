@@ -34,7 +34,11 @@ export function LoginForm() {
         const userId = data.korisnikId;
         console.log(userId)
         localStorage.setItem("userId", userId);
-        navigate("/user")
+        if (data.odobren === true) {
+          navigate("/user")
+        } else {
+          alert('Potrebno je sačekati odobrenje registracije od strane admina');
+        }
       }
     } else {
       console.log("Invalid username or password")

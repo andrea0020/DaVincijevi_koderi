@@ -38,6 +38,7 @@ public class Korisnik {
         return odobren;
     }
 
+
     public Long getId() {
         return id;
     }
