@@ -1,8 +1,8 @@
 package com.projektProgi.StoZelisCitati.models;
 
 public class KnjigaDto {
-    private String naziv, autor, izdavac, kategorija, zanr, opis, oznaka, stanjeOcuvanosti, slikaURL;
-    private int godIzdanja, isbn, brojIzdanja;
+    private String naziv, autor, izdavac, kategorija, zanr, opis, oznaka, stanjeOcuvanosti, slikaURL, isbn;
+    private int godIzdanja, brojIzdanja;
 
     public KnjigaDto() {
     }
@@ -87,11 +87,11 @@ public class KnjigaDto {
         this.godIzdanja = godIzdanja;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
