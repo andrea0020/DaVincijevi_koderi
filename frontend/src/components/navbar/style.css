@@ -1,0 +1,19 @@
+body {
+   overflow: auto;
+}
+
+.logo {
+   transition: margin-left 0.3s;
+   margin-left: 25px; /* Dodajte prijelaz za glatko pomicanje */
+ }
+ 
+
+
+ .navbar {
+   transition: margin 0.3s; /* Dodajte tranziciju kako bi promjene bile glatke */
+   margin-left: 25px;
+ }
+ 
+ .scrolled {
+   margin-left: 10px; /* Primjer promjene margine kada je navbar skrolan */
+ }

@@ -5,6 +5,11 @@
    background-color: transparent;
 }
 
+body {
+
+   overflow: auto; /* omogućuje skrolanje prema potrebi */
+ }
+
 /* Container for the registration form */
 .register-container {
    width: 100%;
@@ -15,16 +20,18 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   overflow: auto;
 }
 
 /* Styling for the form inside the register-container */
 .register-container form {
-   width: 300px;
+   width: 350px;
    height: 90vh;
    padding: 10px;
    background-color: rgba(255, 255, 255, 0.8);
    border-radius: 10px;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+   overflow: auto;
 }
 
 .register-container h2 {
