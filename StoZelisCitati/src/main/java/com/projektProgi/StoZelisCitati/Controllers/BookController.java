@@ -36,6 +36,7 @@ public class BookController {
         knjiga.setGodIzdanja(knjigaDto.getGodIzdanja());
         knjiga.setBrojIzdanja(knjigaDto.getBrojIzdanja());
         knjiga.setStanjeOcuvanosti(knjigaDto.getStanjeOcuvanosti());
+        knjiga.setSlikaURL(knjigaDto.getSlikaURL());
 
         knjiga = bookService.saveBook(knjiga);
 
