@@ -41,6 +41,7 @@ export function LoginForm() {
         }
       }
     } else {
+      alert('Niste se registrirali ili su podaci netočni.');
       console.log("Invalid username or password")
     }
   }
