@@ -147,7 +147,7 @@ export function UserForm() {
                <div key={book.id}>
                      <img
                         src={book.slikaURL}
-                        style={{ maxWidth: "100px", maxHeight: "100px" }}
+                        style={{ maxWidth: "60px", maxHeight: "60px", marginRight: '10px'}}
                      />
                   <span>
                      <span style={{fontWeight: 'bold', textDecoration: 'underline'}}>
