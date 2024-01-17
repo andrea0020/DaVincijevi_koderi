@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-StoZelisCitatiApplication<StoZelisCitati>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.projektProgi.StoZelisCitati.StoZelisCitatiApplication",
+            "projectName": "StoZelisCitati",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

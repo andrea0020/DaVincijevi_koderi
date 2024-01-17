@@ -2,7 +2,15 @@ package com.projektProgi.StoZelisCitati.models;
 
 public class KnjigaDto {
     private String naziv, autor, izdavac, kategorija, zanr, opis, oznaka, stanjeOcuvanosti, slikaURL, isbn;
-    private int godIzdanja, brojIzdanja;
+    private int godIzdanja, brojIzdanja, zahtjevi;
+
+    public int getZahtjevi() {
+        return zahtjevi;
+    }
+
+    public void setZahtjevi(int zahtjevi) {
+        this.zahtjevi = zahtjevi;
+    }
 
     public KnjigaDto() {
     }
