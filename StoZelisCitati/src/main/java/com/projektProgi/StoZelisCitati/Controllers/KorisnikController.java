@@ -50,14 +50,14 @@ public class KorisnikController {
         List<Korisnik> korisnici = korisnikService.GetSviKorisnici();
 
         if (loginDto.getUsername().equals("AdminStranice") && loginDto.getPassword().equals("adminovasifra")) {
-            dto.setRole("Admin");
+            dto.setRole("admin");
             dto.setOdobren(true);
             return ResponseEntity.ok(dto);
         }
 
         for (int i = 0; i < korisnici.size(); i++) {
             if (loginDto.getUsername().equals(korisnici.get(i).getUsername()) && loginDto.getPassword().equals(korisnici.get(i).getPassword())) {
-                dto.setRole("User"); // change this to all 3 roles
+                dto.setRole(korisnici.get(i).getTip());
                 dto.setKorisnikId(korisnici.get(i).getId());
                 dto.setOdobren(korisnici.get(i).getOdobren());
                 return ResponseEntity.ok(dto);

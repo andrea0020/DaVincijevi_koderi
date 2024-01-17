@@ -12,6 +12,7 @@ export function UserForm() {
    const [showBook, setShowBook] = useState(false);
    const [offers, setOffers] = useState([]);
    const [showOffers, setShowOffers] = useState(false);
+   const [userType, setUserType] = useState();
 
    const buttonStyle = {
       position: 'fixed',
@@ -22,6 +23,8 @@ export function UserForm() {
     };
 
    useEffect(() => {
+      const initialUserType = localStorage.getItem("userType");
+      setUserType(initialUserType);
       fetchUser();
       fetchBooks();
       fetchOffersByUser();
@@ -30,6 +33,7 @@ export function UserForm() {
    
    const fetchUser = async () => {
       const userId = localStorage.getItem("userId")
+      const userType = localStorage.getItem("userType");
       const response = await fetch(`${VITE_API_URL}/users/${userId}`);
       const data = await response.json();
       console.log(data)
@@ -87,7 +91,7 @@ export function UserForm() {
 
    const handleToggleOffers = () => {
       setShowOffers((prevShowOffers) => !prevShowOffers);
-    };
+   };
 
    return(
       <div>
@@ -212,11 +216,16 @@ export function UserForm() {
                         </span>
                         </>
                      )}
-                     <span>
+                     {((userType === "izdavac" && (book.oznaka === 'hrv+dobavljiva' || book.oznaka === 'hrv+nijeDobavljiva')) ||
+                        (userType === "antikvarijat") || (userType === "preprodavac"))
+                         && (
+                        <span>
                         <button type="button" style={{backgroundColor: 'rgba(150, 150, 200, 1)', borderRadius: '8px', marginLeft: '10px', marginBottom: '10px'}} onClick={() => navigate(`/book/${book.id}/offer`)}>
                            Dodaj ponudu
                         </button>
-                     </span>
+                        </span>
+                        )}
+                     
                   </span>
                </div>
             ))}

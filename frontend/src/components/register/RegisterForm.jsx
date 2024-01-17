@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { VITE_API_URL } from "../../utils/constants";
+import { Link } from "react-router-dom";
 
 const options = [
    { value: 'antikvarijat', name: "Antikvarijat"},
@@ -92,7 +93,7 @@ export function RegisterForm() {
         </div>
 
         <button type="submit" onClick={showAlert}>Register</button>
-        <p className="login-link">Already have an account? <a href="/login">Login</a></p>
+        <p className="login-link">Already have an account? <Link to="/login">Log in</Link></p>
     </form>
    )
 }
