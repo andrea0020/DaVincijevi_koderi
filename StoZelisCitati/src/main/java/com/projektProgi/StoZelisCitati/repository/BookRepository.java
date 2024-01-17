@@ -17,4 +17,5 @@ public interface BookRepository extends JpaRepository<Knjiga, Long> {
     @Query(value="UPDATE Knjiga SET zahtjevi = zahtjevi+1 WHERE id = ?", nativeQuery=true)
     int incrementRequests(Long id);
     
+    List<Knjiga> findByNaziv(String naziv);
 }

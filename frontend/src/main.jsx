@@ -14,6 +14,7 @@ import { UserPage } from './components/user/UserPage.jsx';
 import { OfferPage } from './components/offer/OfferPage.jsx';
 import { BookPage } from './components/book/BookPage.jsx';
 import { Book } from './components/book/Book.jsx';
+import { BookRequest } from './components/book/BookRequest.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
   {
     path: "/book/:bookId",
     element: <Book />,
+  },
+  {
+    path: "/book/request",
+    element: <BookRequest />,
   }
 ]);
 

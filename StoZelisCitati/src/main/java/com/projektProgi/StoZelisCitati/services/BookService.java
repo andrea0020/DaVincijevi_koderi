@@ -38,4 +38,8 @@ public class BookService {
     public void incrementRequests(Long bookId){
         bookRepository.incrementRequests(bookId);
     }
+
+    public List<Knjiga> findByName(String naziv){
+        return bookRepository.findByNaziv(naziv);
+    }
 }

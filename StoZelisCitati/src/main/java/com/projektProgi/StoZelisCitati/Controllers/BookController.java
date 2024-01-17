@@ -67,4 +67,9 @@ public class BookController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/request/{bookName}")
+    public List<Knjiga> findByName(@PathVariable String bookName){
+        return bookService.findByName(bookName);
+    }
+
 }

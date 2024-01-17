@@ -7,6 +7,7 @@ export function Navbar() {
          <img src="/images/logo.png" className="logo" alt="" style={{ marginLeft: '25px' }}/>
       <nav>
             <ul>
+                <li><Link to="/book/request">Request translation</Link></li>
                 <li><Link to="/">HOME</Link></li>
                 <li><Link to="/login">LOGIN</Link></li>
                 <li><Link to="/register">REGISTER</Link></li>

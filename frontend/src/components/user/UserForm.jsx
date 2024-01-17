@@ -210,6 +210,12 @@ export function UserForm() {
                            </span>{" "}
                            {book.brojIzdanja}
                         </span>
+                        <span>
+                           <span style={{fontWeight: 'bold', marginLeft: '10px', textDecoration: 'underline'}}>
+                              Broj zahtjeva za prijevod: 
+                           </span>{" "}
+                           {book.zahtjevi}
+                        </span>
                         </>
                      )}
                      <span>
