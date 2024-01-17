@@ -13,6 +13,9 @@ import { AdminPage } from './components/admin/AdminPage.jsx';
 import { UserPage } from './components/user/UserPage.jsx';
 import { OfferPage } from './components/offer/OfferPage.jsx';
 import { BookPage } from './components/book/BookPage.jsx';
+import { Searching } from './components/search/Search.jsx';
+import { FetchDataBooks } from './components/data/data.jsx';
+import BookDetails from './components/book/BookDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,15 @@ const router = createBrowserRouter([
     path: "/book",
     element: <BookPage />,
   },
+  {path:"/search",
+   element: <Searching />
+  },
+  {path:"/data",
+   element: <FetchDataBooks />  
+  },
+  {path:"/book/:bookId",
+  element: <BookDetails />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

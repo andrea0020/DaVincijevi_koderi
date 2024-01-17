@@ -65,6 +65,7 @@ export function AddBookPage() {
              "Content-Type": "application/json"
          },
          body: JSON.stringify(bookDto)
+          
      })
  
      if (response.status === 201) {
@@ -140,6 +141,7 @@ export function AddBookPage() {
             <input type="text" id="brojIzdanja" name="brojIzdanja" required placeholder='Broj izdanja' value={brojIzdanja} onChange={(e) => setBrojIzdanja(e.target.value)} style={{ fontSize: '11px' }} />
         </div>
         <button type="submit" >Dodaj</button>
+        
     </form>
       </div>
    )

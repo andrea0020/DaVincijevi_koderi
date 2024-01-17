@@ -1,0 +1,51 @@
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/frontend/public/images/page_wallpaper.jpg");
+    background-color: transparent;
+}
+
+
+.main-Div{
+height: 100vh;
+display: grid;
+grid-template-columns: 30% 30% 40%;
+grid-template-rows: 20% 20% 20% 20% 20% ;
+margin-top: 100px;
+
+
+}
+.slika{
+    height: 70%;
+    width: 80%;
+    margin-left: 50px;
+    grid-row-start: 1;
+    grid-row-end: 5;
+
+}
+
+h1{
+    font-family: sans-serif;
+    font-weight: 900;
+    grid-column-end: 4;
+    grid-column-start: 2;
+}
+
+.autor{
+    grid-row-start: 2;
+    font-size: larger;
+    margin-top: -80px;
+}
+
+.godina{
+    grid-row-start: 2;
+    font-size: larger;
+    margin-top: -80px;
+    margin-left: -150px;
+}
+.opis{
+    font-size: 30px;
+    grid-row-start: 3;
+    grid-column-end: 3;
+    grid-column-start: 2;
+    margin-top: -160px;
+
+}
