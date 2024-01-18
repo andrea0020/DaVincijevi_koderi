@@ -10,6 +10,7 @@ export function Navbar() {
                 <li><Link to="/">HOME</Link></li>
                 <li><Link to="/login">LOGIN</Link></li>
                 <li><Link to="/register">REGISTER</Link></li>
+                <li><Link to="/map">OSMap</Link></li>
             </ul>
         </nav>
         <button className="hamburger " >

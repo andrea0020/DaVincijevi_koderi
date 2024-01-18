@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {HomePage} from './components/home/HomePage.jsx'
+import { HomePage } from './components/home/HomePage.jsx'
 import './index.css'
 
 import {
@@ -13,6 +13,8 @@ import { AdminPage } from './components/admin/AdminPage.jsx';
 import { UserPage } from './components/user/UserPage.jsx';
 import { OfferPage } from './components/offer/OfferPage.jsx';
 import { BookPage } from './components/book/BookPage.jsx';
+import OSMap from './components/map/OSMap.jsx';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "/book",
     element: <BookPage />,
+  },
+  {
+    path: "/map",
+    element: <OSMap />,
   },
 ]);
 
