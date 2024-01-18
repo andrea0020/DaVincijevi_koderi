@@ -42,7 +42,7 @@ export function AddOfferPage() {
 
    return (
       <div>
-         <h1>Dodaj novu ponudu</h1>
+         <h1 style={{ color: 'gray' }}>Dodaj novu ponudu</h1>
          <form onSubmit={handleSubmit}>
         <div className="input-group">
             <label htmlFor="cijena">Cijena</label>

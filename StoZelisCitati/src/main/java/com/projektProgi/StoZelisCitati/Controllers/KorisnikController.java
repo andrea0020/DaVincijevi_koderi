@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -36,6 +35,7 @@ public class KorisnikController {
         korisnik.setEmail(korisnikDto.getEmail());
         korisnik.setTip(korisnikDto.getTip());
         korisnik.setOdobren(false);
+        korisnik.setPrijavljen(false);
         korisnik.setPassword(korisnikDto.getPassword()); // we should encrypt this
         korisnik.setUsername(korisnikDto.getUsername());
 
@@ -57,14 +57,34 @@ public class KorisnikController {
 
         for (int i = 0; i < korisnici.size(); i++) {
             if (loginDto.getUsername().equals(korisnici.get(i).getUsername()) && loginDto.getPassword().equals(korisnici.get(i).getPassword())) {
-                dto.setRole("User"); // change this to all 3 roles
+                dto.setRole(korisnici.get(i).getTip()); // change this to all 3 roles
                 dto.setKorisnikId(korisnici.get(i).getId());
                 dto.setOdobren(korisnici.get(i).getOdobren());
+                if (korisnici.get(i).isOdobren()) {
+                    korisnici.get(i).setPrijavljen(true);
+                    korisnikService.saveKorisnik(korisnici.get(i));
+                } else {
+                    korisnici.get(i).setPrijavljen(false);
+                    korisnikService.saveKorisnik(korisnici.get(i));
+                }
                 return ResponseEntity.ok(dto);
             }
         }
 
         return ResponseEntity.badRequest().build();
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logoutUser(@RequestBody Long userId) {
+        Korisnik korisnik = korisnikService.getUserById(userId);
+
+        if (korisnik != null) {
+            korisnik.setPrijavljen(false);
+            korisnikService.saveKorisnik(korisnik);
+            return ResponseEntity.ok("Logout successful");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/users")

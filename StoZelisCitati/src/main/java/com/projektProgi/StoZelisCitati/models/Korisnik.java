@@ -19,7 +19,7 @@ public class Korisnik {
     private String username ="";
     private String password = "";
     private String URLL = "";
-    private boolean odobren;
+    private boolean odobren, prijavljen;
     private String naziv, adresa, email, telefon, tip;
 
     @JsonIgnore
@@ -38,6 +38,13 @@ public class Korisnik {
         return odobren;
     }
 
+    public boolean isPrijavljen() {
+        return prijavljen;
+    }
+
+    public void setPrijavljen(boolean prijavljen) {
+        this.prijavljen = prijavljen;
+    }
 
     public Long getId() {
         return id;

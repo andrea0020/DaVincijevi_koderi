@@ -77,7 +77,7 @@ export function AddBookPage() {
 
    return (
       <div>
-         <h1>Dodaj novu knjigu</h1>
+         <h1 style={{ color: 'gray' }}>Dodaj novu knjigu</h1>
          <form onSubmit={handleSubmit}>
         <div className="input-group">
             <label htmlFor="naziv">Naziv</label>

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
+import java.util.*;
 
 @RequestMapping("/book")
 @RestController
@@ -48,9 +48,26 @@ public class BookController {
         return this.bookService.getAllBooks();
     }
 
+    @GetMapping("/{bookId}")
+    public Optional<Knjiga> getBook(@PathVariable Long bookId) {
+        return this.bookService.getBook(bookId);
+    }
+
     @DeleteMapping("/{bookId}")
     public ResponseEntity<?> deleteBook(@PathVariable Long bookId) {
         bookService.deleteBook(bookId);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/request/{bookName}")
+    public List<Knjiga> findByName(@PathVariable String bookName){
+        return bookService.findByName(bookName);
+    }
+
+    @PutMapping("/{bookId}")
+    @CrossOrigin(origins = "http://localhost:5173")
+    public ResponseEntity<?> incrementRequests(@PathVariable Long bookId){
+        bookService.incrementRequests(bookId);
         return ResponseEntity.ok().build();
     }
 

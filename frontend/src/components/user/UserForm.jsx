@@ -12,6 +12,7 @@ export function UserForm() {
    const [showBook, setShowBook] = useState(false);
    const [offers, setOffers] = useState([]);
    const [showOffers, setShowOffers] = useState(false);
+   const [userType, setUserType] = useState();
 
    const buttonStyle = {
       position: 'fixed',
@@ -22,6 +23,8 @@ export function UserForm() {
     };
 
    useEffect(() => {
+      const initialUserType = localStorage.getItem("userType");
+      setUserType(initialUserType);
       fetchUser();
       fetchBooks();
       fetchOffersByUser();
@@ -30,6 +33,7 @@ export function UserForm() {
    
    const fetchUser = async () => {
       const userId = localStorage.getItem("userId")
+      const userType = localStorage.getItem("userType");
       const response = await fetch(`${VITE_API_URL}/users/${userId}`);
       const data = await response.json();
       console.log(data)
@@ -133,6 +137,12 @@ export function UserForm() {
                      </span>{" "}
                      {user.telefon}
                </span>
+               <span>
+                  <span style={{fontWeight: 'bold',  marginLeft: '10px', textDecoration: 'underline'}}>
+                     Tip ponuditelja: 
+                     </span>{" "}
+                     {user.tip}
+               </span>
                </ul>
             </div>
          )}
@@ -147,13 +157,19 @@ export function UserForm() {
                <div key={book.id}>
                      <img
                         src={book.slikaURL}
-                        style={{ maxWidth: "60px", maxHeight: "60px", marginRight: '10px'}}
+                        style={{ maxWidth: "60px", maxHeight: "60px", marginRight: '10px', borderRadius: '5px'}}
                      />
                   <span>
                      <span style={{fontWeight: 'bold', textDecoration: 'underline'}}>
                         Naziv: 
                      </span>{" "}
                      {book.naziv}
+                     <span>
+                           <span style={{fontWeight: 'bold', marginLeft: '10px', textDecoration: 'underline', fontSize: '13px'}}>
+                              Zahtjevi za prijevod: 
+                           </span>{" "}
+                           {book.zahtjevi}
+                        </span>
                      {showBook && (
                         <>
                         <span>
@@ -213,11 +229,17 @@ export function UserForm() {
                         </>
                      )}
                      <span>
+                     {((userType === "izdavac" && (book.oznaka === 'hrv+dobavljiva' || book.oznaka === 'hrv+nijeDobavljiva')) ||
+                        (userType === "antikvarijat") || (userType === "preprodavac"))
+                         && (
+                        <span>
                         <button type="button" style={{backgroundColor: 'rgba(150, 150, 200, 1)', borderRadius: '8px', marginLeft: '10px', marginBottom: '10px'}} onClick={() => navigate(`/book/${book.id}/offer`)}>
                            Dodaj ponudu
                         </button>
                      </span>
+                      )}
                   </span>
+               </span>
                </div>
             ))}
          </ul>
@@ -242,7 +264,7 @@ export function UserForm() {
                      <span style={{fontWeight: 'bold', textDecoration: 'underline' }}>
                            Cijena:
                         </span>{" "}
-                        {offer.cijena}
+                        {offer.cijena}€
                   </span>
                   <span style={{ marginLeft: '10px'}}>
                      <span style={{fontWeight: 'bold',textDecoration: 'underline'}}>
