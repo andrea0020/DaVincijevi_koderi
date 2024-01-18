@@ -29,12 +29,16 @@ export function LoginForm() {
       console.log(data)
       const role = data.role; // "Admin" or "User"
       if (role === "Admin") { 
+        localStorage.setItem("userType", "Admin");
+        localStorage.setItem("isLoggedIn", true);
         navigate("/admin")
       } else {
         const userId = data.korisnikId;
         console.log(userId)
         localStorage.setItem("userId", userId);
         if (data.odobren === true) {
+          localStorage.setItem("isLoggedIn", true);
+          localStorage.setItem("userType", role);
           navigate("/user")
         } else {
           alert('Potrebno je sačekati odobrenje registracije od strane admina');

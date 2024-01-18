@@ -64,7 +64,7 @@ export function RegisterForm() {
         </div>
         <div className="input-group">
             <label htmlFor="password">Password</label>
-            <input type="text" id="password" name="password" required placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} style={{ fontSize: '11px' }}/>
+            <input type="password" id="password" name="password" required placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} style={{ fontSize: '11px' }}/>
         </div>
         <div className="input-group">
             <label htmlFor="naziv">Naziv</label>
