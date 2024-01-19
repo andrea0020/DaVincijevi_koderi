@@ -378,6 +378,16 @@ U ovakvoj organizaciji, svaki sloj ima jasno definiranu ulogu, što doprinosi bo
 			
 		\section{Dijagram komponenti}
 		
-			\textbf{\textit{dio 2. revizije}}\\
-		
-			 \textit{Potrebno je priložiti dijagram komponenti s pripadajućim opisom. Dijagram komponenti treba prikazivati strukturu cijele aplikacije.}
+			\textit{Dijagram komponenti je vrsta strukturnog dijagrama koja prikazuje logičke komponente sustava i njihove odnose. Na ovom dijagramu su vdiljive komponente Prijava, Pretraživanje, Prikaz karte i Prikaz registriranog korisnika koje djeluju unutar React view komponente unutar Frontend web prikaza komponente. One su preko sučelja za dohvat HTML, CSS i JS povezane s komponentom Main.JSX koja funkcionira kao router koji upravlja prikazom i funkcionalnošću grafičkog prikaza. Ovisno o potrebi upravlja ih na komponente AdminPage, RegisterPage, LoginPage, UserPage, BookPage, OfferPage, te HomePage. Sve te komponente se nalaze u Web aplikaciji. Dodatno u Web aplikaciji je komponenta REST API koja je povezana s komponentama za pretraživanje i prikaz registriranog korisnika preko sučelja dohvat JSON. Ona ovisno o potrebi se nadovezuje na Prikaz ponude knjiga koja je preko sučelja SQL povezana s vanjskom komponentom Baza podataka. Ili Prikaz karte koja je preko sučelja REACT API povezana s vanjskom komponento OpenStreetMap. }
+
+            \eject
+			
+			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{dijagrami/Dijagram komponenti.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Dijagram komponenti }
+				\label{fig:dijagramkomponenti1}
+			\end{figure}
+			
+			\eject
