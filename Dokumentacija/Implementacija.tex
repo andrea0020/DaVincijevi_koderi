@@ -73,7 +73,7 @@
 
    
 			A zatim smo testirali deleteBook metodu. 
-                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=2st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
  @Test
     @DisplayName("Testiranje deleteBook metode.")
     void testDeleteBook(){
@@ -87,7 +87,7 @@
             Zatim smo testirali KorisnikService. Za to smo koristili sučelja Korisnik, Ponuda, i KorisnikRepository.
             
 			Prvo smo testirali dohvaćanje korisnika. 
-                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=3st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
  @Test
     @DisplayName("Test dohvaćanja korisnika.")
     void testGetUserById() {
@@ -130,7 +130,7 @@
 \end{lstlisting}
             
 			Zatim smo testirali funkcionalnost spremanja korisnika. 
-                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=4st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
  @Test
     @DisplayName("Test spremanja korisnika.")
     void saveUserTest(){
@@ -177,7 +177,7 @@
 			Nakon toga smo testirali ponudu, to jest OfferService. Za te testove smo koristili sučelja Knjiga, Korisnik, Ponuda, PonudaDto, BookRepository, KorisnikRepository, OfferRepository i OfferService. 
             Prvo smo testirali brisanje ponude. 
             
-                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=5st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
  @Test
     @DisplayName("Testiranje brisanja ponude.")
     void deleteOfferTest() {
@@ -190,7 +190,7 @@
     
 \end{lstlisting}
             A zatim smo testirali spremanje ponude. 
-                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=6st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
   @Test
     @DisplayName("Testiranje spremanja ponude.")
     void saveOffer() {
@@ -220,7 +220,7 @@
     
 \end{lstlisting}
             Zatim smo testirali kada spremamo ponudu, a ne postoji taj userId.
-                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=7st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
  @Test
     @DisplayName("Testiranje kada spremamo ponudu. a ne postoji taj userId.")
     void saveOfferInvalid() {
@@ -245,7 +245,7 @@
 \end{lstlisting}
 
             Svi testovi su se ispravno izveli s očekivanim rezultatima. 
-            \eject
+          
 			
 			
 			\begin{figure}[H]
@@ -255,8 +255,6 @@
 				\label{fig:BookService1}
 			\end{figure}
 			
-			\eject
-            \eject
 			
 			
 			\begin{figure}[H]
@@ -266,8 +264,6 @@
 				\label{fig:KorisnikService1}
 			\end{figure}
 			
-			\eject
-            \eject
 			
 			
 			\begin{figure}[H]
@@ -288,7 +284,7 @@
 			 Testiranje cjelokupnog sustava obavljeno je korištenjem Selenium WebDriver-a unutar JUnit testova. U svakom od testova unaprijed postavljamo konfiguraciju drivera, uključujući URL aplikacije. Zatim driver automatski locira prethodno definirane elemente, a test mu proslijeđuje potrebne podatke.
     
             Prvo smo testirali logiranje već prije registriranog korisnika.
-           \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+           \begin{lstlisting}[language=Java, label=8st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
  public class SeleniumTest1 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
@@ -331,7 +327,7 @@
 
    
 			Zatim smo testirali registraciju novoga korisnka.
-                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=9st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
  public class SeleniumTest2 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
@@ -379,7 +375,7 @@
 \end{lstlisting}
 
 			Nakon toga testiramo ulogiravanje registriranog korisnika, te nakon ulogiravanja dodajemo knjigu.
-                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=l0st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
  public class SeleniumTest3 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
@@ -452,7 +448,7 @@
 \end{lstlisting}
             
 			Te za kraj smo testirali unošenje zahtjeva za prevođenje knjige.
-                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=l1st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
  public class SeleniumTest4 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
@@ -485,7 +481,7 @@
 			
 
             Svi testovi su se ispravno izveli s očekivanim rezultatima. 
-            \eject
+            
 			
 			
 			\begin{figure}[H]
@@ -495,8 +491,6 @@
 				\label{fig:loginTest1}
 			\end{figure}
 			
-			\eject
-            \eject
 			
 			
 			\begin{figure}[H]
@@ -506,8 +500,6 @@
 				\label{fig:registerTest1}
 			\end{figure}
 			
-			\eject
-            \eject
 			
 			
 			\begin{figure}[H]
@@ -517,8 +509,6 @@
 				\label{fig:addBookTest1}
 			\end{figure}
 			
-			\eject
-            \eject
 			
 			
 			\begin{figure}[H]
@@ -563,7 +553,7 @@
             Što se tiče Frontenda potrebno je imati instaliran Node (preporučljiva najnovija verzija). 
             Da bi se stranica pokrenula na localhostu potrebno je prvo utipkati u terminal direktorija FRONTEND. 
                 \textit{npm install}
-            \eject
+         
 			
 			
 			\begin{figure}[H]
@@ -573,7 +563,7 @@
 				\label{fig:npminstall1}
 			\end{figure}
 			
-			\eject
+			
  	
             Te nakon toga u terminal napisati: 
             \textit{npm run dev}
