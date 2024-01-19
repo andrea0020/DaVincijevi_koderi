@@ -285,16 +285,251 @@
 			
 			\subsection{Ispitivanje sustava}
 			
-			 \textit{Potrebno je provesti i opisati ispitivanje sustava koristeći radni okvir Selenium\footnote{\url{https://www.seleniumhq.org/}}. Razraditi \textbf{minimalno 4 ispitna slučaja} u kojima će se ispitati redovni slučajevi, rubni uvjeti te poziv funkcionalnosti koja nije implementirana/izaziva pogrešku kako bi se vidjelo na koji način sustav reagira kada nešto nije u potpunosti ostvareno. Ispitni slučaj se treba sastojati od ulaza (npr. korisničko ime i lozinka), očekivanog izlaza ili rezultata, koraka ispitivanja i dobivenog izlaza ili rezultata.\\ }
-			 
-			 \textit{Izradu ispitnih slučajeva pomoću radnog okvira Selenium moguće je provesti pomoću jednog od sljedeća dva alata:}
-			 \begin{itemize}
-			 	\item \textit{dodatak za preglednik \textbf{Selenium IDE} - snimanje korisnikovih akcija radi automatskog ponavljanja ispita	}
-			 	\item \textit{\textbf{Selenium WebDriver} - podrška za pisanje ispita u jezicima Java, C\#, PHP koristeći posebno programsko sučelje.}
-			 \end{itemize}
-		 	\textit{Detalji o korištenju alata Selenium bit će prikazani na posebnom predavanju tijekom semestra.}
+			 Testiranje cjelokupnog sustava obavljeno je korištenjem Selenium WebDriver-a unutar JUnit testova. U svakom od testova unaprijed postavljamo konfiguraciju drivera, uključujući URL aplikacije. Zatim driver automatski locira prethodno definirane elemente, a test mu proslijeđuje potrebne podatke.
+    
+            Prvo smo testirali logiranje već prije registriranog korisnika.
+           \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ public class SeleniumTest1 {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+        boolean result = loginTest(webDriver, "user", "pass");
+        System.out.println("Test pass: " + result);
+
+        WebDriver webDriver2 = new ChromeDriver();
+        webDriver2.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+        result = loginTest(webDriver2, "kriviuser", "krivasifra");
+        System.out.println("Test pass: " + result);
+        webDriver.quit();
+        webDriver2.quit();
+    }
+
+    public static boolean loginTest(WebDriver driver, String username, String password){
+
+        try {
+            driver.get("http://localhost:5173/login/");
+            WebElement element = driver.findElement(By.name("username"));
+            element.sendKeys(new CharSequence[]{username});
+            element = driver.findElement(By.name("password"));
+            element.sendKeys(new CharSequence[]{password});
+            driver.findElement(By.name("submit")).click();
+        }catch (UnhandledAlertException e){
+        }
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String redirectionURL = driver.getCurrentUrl();
+        System.out.println("Trenutni URL je: " + redirectionURL);
+
+        return redirectionURL.contains("user");
+    }
+\end{lstlisting}
+
+   
+			Zatim smo testirali registraciju novoga korisnka.
+                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ public class SeleniumTest2 {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+        boolean result = registerTest(webDriver, "user", "pass", "naziv", "adresa", "tel", "mail@gmail.com",
+                "antikvarijat");
+        System.out.println("Test pass " + result);
+        webDriver.quit();
+    }
+
+    public static boolean registerTest(WebDriver driver, String username, String password, String naziv, String adresa, String telefon,
+        String email, String tip){
+        String redirectionURL = "";
+        try{ driver.get("http://localhost:5173/register/");
+            WebElement element = driver.findElement(By.name("username"));
+            element.sendKeys(new CharSequence[]{username});
+            element = driver.findElement(By.name("password"));
+            element.sendKeys(new CharSequence[]{password});
+            element = driver.findElement(By.name("naziv"));
+            element.sendKeys(new CharSequence[]{naziv});
+            element = driver.findElement(By.name("adresa"));
+            element.sendKeys(new CharSequence[]{adresa});
+            element = driver.findElement(By.name("telefon"));
+            element.sendKeys(new CharSequence[]{telefon});
+            element = driver.findElement(By.name("email"));
+            element.sendKeys(new CharSequence[]{email});
+            driver.findElement(By.name("tip")).click();
+            driver.findElement(By.name(tip)).click();
+            driver.findElement(By.name("submit")).click();
+        } catch (UnhandledAlertException e){
+                System.out.println(e.getAlertText());
+        }
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        redirectionURL = driver.getCurrentUrl();
+        System.out.println("Trenutni URL je: " + redirectionURL);
+        return redirectionURL.contains("login");
+    }
+    
+\end{lstlisting}
+
+			Nakon toga testiramo ulogiravanje registriranog korisnika, te nakon ulogiravanja dodajemo knjigu.
+                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ public class SeleniumTest3 {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
+        WebDriver webDriver = new ChromeDriver();
+        String oznaka = "hrv+dobavljiva";
+        String kategorija = "domaći";
+        String stanje = "izvrsno";
+        webDriver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+        boolean result = addBookTest(webDriver, "user", "pass", "naziv", "autor", "izdavac", kategorija,
+                "zanr", "opis", oznaka, "url", "2005", "1", stanje);
+        System.out.println("Test pass " + result);
+        webDriver.quit();
+    }
+
+    private static boolean addBookTest(WebDriver driver, String username, String password, String naziv, String autor, String izdavac, String kategorija,
+                                       String zanr, String opis, String oznaka, String url, String godina, String broj, String stanje){
+        driver.get("http://localhost:5173/login/");
+        WebElement element = driver.findElement(By.name("username"));
+        element.sendKeys(new CharSequence[]{username});
+        element = driver.findElement(By.name("password"));
+        element.sendKeys(new CharSequence[]{password});
+        driver.findElement(By.name("submit")).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String redirectionURL = driver.getCurrentUrl();
+        System.out.println("Trenutni URL je: " + redirectionURL);
+
+        driver.findElement(By.name("addButton")).click();
+
+        element = driver.findElement(By.name("naziv"));
+        element.sendKeys(new CharSequence[]{naziv});
+        element = driver.findElement(By.name("autor"));
+        element.sendKeys(new CharSequence[]{autor});
+        element = driver.findElement(By.name("izdavac"));
+        element.sendKeys(new CharSequence[]{izdavac});
+        element = driver.findElement(By.name("zanr"));
+        element.sendKeys(new CharSequence[]{zanr});
+        element = driver.findElement(By.name("opis"));
+        element.sendKeys(new CharSequence[]{opis});
+        element = driver.findElement(By.name("slikaURL"));
+        element.sendKeys(new CharSequence[]{url});
+        element = driver.findElement(By.name("godIzdanja"));
+        element.sendKeys(new CharSequence[]{godina});
+        element = driver.findElement(By.name("brojIzdanja"));
+        element.sendKeys(new CharSequence[]{broj});
+
+        driver.findElement(By.name("kategorija")).click();
+        driver.findElement(By.name(kategorija)).click();
+
+        driver.findElement(By.name("oznaka")).click();
+        driver.findElement(By.name(oznaka)).click();
+
+        driver.findElement(By.name("stanjeOcuvanosti")).click();
+        driver.findElement(By.name(stanje)).click();
+
+        driver.findElement(By.name("submit")).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String redirectURL = driver.getCurrentUrl();
+        System.out.println("Trenutni URL je: " + redirectURL);
+        return redirectURL.contains("user");
+
+    }    
+\end{lstlisting}
+            
+			Te za kraj smo testirali unošenje zahtjeva za prevođenje knjige.
+                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ public class SeleniumTest4 {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+        boolean result = testTranslationRequest(webDriver,"naziv");
+        System.out.println("Test pass " + result);
+        webDriver.quit();
+    }
+
+    private static boolean testTranslationRequest(WebDriver driver, String naziv){
+        driver.get("http://localhost:5173/");
+        driver.findElement(By.className("request_translation")).click();
+        WebElement element = driver.findElement(By.name("naziv"));
+        element.sendKeys(new CharSequence[]{naziv});
+        driver.findElement(By.name("submit")).click();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String redirectURL = driver.getCurrentUrl();
+        System.out.println("Trenutni URL je: " + redirectURL);
+
+        return redirectURL.equals("http://localhost:5173/");
+    }
+    
+\end{lstlisting}
+            
 			
-			\eject 
+
+            Svi testovi su se ispravno izveli s očekivanim rezultatima. 
+            \eject
+			
+			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/SeliniumTest1.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Rezultat testiranja logina }
+				\label{fig:loginTest1}
+			\end{figure}
+			
+			\eject
+            \eject
+			
+			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/SeliniumTest2.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Rezultat testiranja registriranja }
+				\label{fig:registerTest1}
+			\end{figure}
+			
+			\eject
+            \eject
+			
+			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/SeliniumTest3.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Rezultat testiranja logina uz dodavanje knjige}
+				\label{fig:addBookTest1}
+			\end{figure}
+			
+			\eject
+            \eject
+			
+			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/SeliniumTest4.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Rezultat testiranja dodavanje zahtjeva za prevođenje}
+				\label{fig:testTranslationRequest1}
+			\end{figure}
+			
+			\eject
+		
 		
 		
 		\section{Dijagram razmještaja}
