@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './BookReq.css'
+import { VITE_API_URL } from '../../utils/constants';
 
 export function Book(){
     const [isbn, setIsbn] = useState('0');
     const [zahtjevi, setZahtjevi] = useState(0);
     const { bookId } = useParams();
-    fetch(`http://localhost:8080/book/${bookId}`, {method: 'GET'})
+    fetch(`${VITE_API_URL}/book/${bookId}`, {method: 'GET'})
         .then(response => response.json())
         .then(data => {
                 setIsbn(data.isbn);
@@ -21,8 +22,8 @@ export function Book(){
             <button onClick={
                 (e) => {
                     e.currentTarget.disabled = true;
-                    fetch(`http://localhost:8080/book/${bookId}`, {method:'PUT'})
-                    fetch(`http://localhost:8080/book/${bookId}`, {method: 'GET'})
+                    fetch(`${VITE_API_URL}/book/${bookId}`, {method:'PUT'})
+                    fetch(`${VITE_API_URL}/book/${bookId}`, {method: 'GET'})
                         .then(response => response.json())
                         .then(data => {
                                 setIsbn(data.isbn);
