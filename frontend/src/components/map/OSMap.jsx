@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import './osMap.css';
 import mapboxgl from 'mapbox-gl';
 import { Navbar } from '../navbar/Navbar';
+import { VITE_API_URL } from '../../utils/constants';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZnN0dXJsaWMiLCJhIjoiY2xyaTA5M3pxMDNzcDJscG51YjZwaGk2byJ9.qkTOWLRu5m_V1eZxSnF0UQ';
 
@@ -17,7 +18,7 @@ export function OSMap() {
   // Fetch users and their offers, then set the geojsonData state
   useEffect(() => {
     async function fetchData() {
-      const usersResponse = await fetch("http://localhost:8080/users");
+      const usersResponse = await fetch(`${VITE_API_URL}/users`);
       if (!usersResponse.ok) throw new Error('Network response was not ok');
       const users = await usersResponse.json();
 
@@ -26,7 +27,7 @@ export function OSMap() {
         if (!addressResponse.ok) throw new Error('Network response was not ok');
         const addressData = await addressResponse.json();
 
-        const offersResponse = await fetch(`http://localhost:8080/offer/users/${user.id}`);
+        const offersResponse = await fetch(`${VITE_API_URL}/offer/users/${user.id}`);
         if (!offersResponse.ok) throw new Error('Network response was not ok');
         const offers = await offersResponse.json();
 
