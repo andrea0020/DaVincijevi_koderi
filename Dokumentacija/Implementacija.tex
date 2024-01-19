@@ -15,11 +15,271 @@
 			
 			\textbf{\textit{dio 2. revizije}}\\
 			
-			 \textit{U ovom poglavlju je potrebno opisati provedbu ispitivanja implementiranih funkcionalnosti na razini komponenti i na razini cijelog sustava s prikazom odabranih ispitnih slučajeva. Studenti trebaju ispitati temeljnu funkcionalnost i rubne uvjete.}
-	
+			 
 			
 			\subsection{Ispitivanje komponenti}
-			\textit{Potrebno je provesti ispitivanje jedinica (engl. unit testing) nad razredima koji implementiraju temeljne funkcionalnosti. Razraditi \textbf{minimalno 6 ispitnih slučajeva} u kojima će se ispitati redovni slučajevi, rubni uvjeti te izazivanje pogreške (engl. exception throwing). Poželjno je stvoriti i ispitni slučaj koji koristi funkcionalnosti koje nisu implementirane. Potrebno je priložiti izvorni kôd svih ispitnih slučajeva te prikaz rezultata izvođenja ispita u razvojnom okruženju (prolaz/pad ispita). }
+			     Sastavne programske komponente formirane su od nekoliko jedinica, uključujući osnovne dijelove programa poput razreda, pripadajućih metoda i atributa, koje međusobno intenzivno surađuju. Interakcija se ostvaruje kroz proceduralna sučelja, gdje svaka komponenta enkapsulira određeni skup funkcionalnosti koje druge komponente mogu pozivati. Evaluacija komponenata izvodi se s pomoću Junit radnog okvira, koji automatizira proces testiranja. Upotrebom dviju vrsta testova, jednih u uobičajenim uvjetima rada i drugih s unosom neispravnih i rubnih uvjeta, analizira se očekivano ponašanje razreda i unaprijed definirani izlaz metoda.
+            Za testiranje BookService metoda koristili smo sučelja Knjiga, Pondua, i BookRepository. Prvo smo testirali saveBook metodu.
+           \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ @Test
+    @DisplayName("Testiranje saveBook metode")
+    void testSaveBook() {
+        // Priprema podataka
+        Knjiga knjiga = new Knjiga();
+        List<Ponuda> ponude = new ArrayList<>();
+        knjiga.setNaziv("Naslov knjige");
+        knjiga.setIsbn("100");
+        knjiga.setAutor("autor");
+        knjiga.setIzdavac("izdavac");
+        knjiga.setBrojIzdanja(1);
+        knjiga.setOpis("opis");
+        knjiga.setGodIzdanja(2005);
+        knjiga.setSlikaURL("url");
+        knjiga.setId(1L);
+        knjiga.setOznaka("oznaka");
+        knjiga.setKategorija("kategorija");
+        knjiga.setStanjeOcuvanosti("st_oc");
+        knjiga.setZahtjevi(50);
+        knjiga.setZanr("zanr");
+        knjiga.setPonude(ponude);
+
+
+        when(bookRepository.save(any(Knjiga.class))).thenReturn(knjiga);
+
+
+        Knjiga savedKnjiga = bookService.saveBook(knjiga);
+
+
+        verify(bookRepository, times(1)).save(knjiga);
+        assertNotNull(savedKnjiga);
+        assertEquals("Naslov knjige", savedKnjiga.getNaziv());
+        assertEquals("100", savedKnjiga.getIsbn());
+        assertEquals("autor", savedKnjiga.getAutor());
+        assertEquals("izdavac", savedKnjiga.getIzdavac());
+        assertEquals(1, savedKnjiga.getBrojIzdanja());
+        assertEquals("opis", savedKnjiga.getOpis());
+        assertEquals(2005, savedKnjiga.getGodIzdanja());
+        assertEquals("url", savedKnjiga.getSlikaURL());
+        assertEquals(1L, savedKnjiga.getId());
+        assertEquals("oznaka", savedKnjiga.getOznaka());
+        assertEquals("kategorija", savedKnjiga.getKategorija());
+        assertEquals("st_oc", savedKnjiga.getStanjeOcuvanosti());
+        assertEquals(50, savedKnjiga.getZahtjevi());
+        assertEquals("zanr", savedKnjiga.getZanr());
+        assertNotNull(savedKnjiga.getPonude());
+
+    }
+\end{lstlisting}
+
+   
+			A zatim smo testirali deleteBook metodu. 
+                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ @Test
+    @DisplayName("Testiranje deleteBook metode.")
+    void testDeleteBook(){
+        Long bookIdToDelete = 1L;
+        bookService.deleteBook(bookIdToDelete);
+        verify(bookRepository).deleteById(bookIdToDelete);
+    }
+    
+\end{lstlisting}
+
+            Zatim smo testirali KorisnikService. Za to smo koristili sučelja Korisnik, Ponuda, i KorisnikRepository.
+            
+			Prvo smo testirali dohvaćanje korisnika. 
+                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ @Test
+    @DisplayName("Test dohvaćanja korisnika.")
+    void testGetUserById() {
+        Long userId = 1L;
+        Korisnik mockKorisnik = new Korisnik();
+        List<Ponuda> ponude = new ArrayList<>();
+
+        mockKorisnik.setId(userId);
+        mockKorisnik.setUsername("username");
+        mockKorisnik.setPassword("password");
+        mockKorisnik.setEmail("email@gmail.com");
+        mockKorisnik.setOdobren(false);
+        mockKorisnik.setTip("tip");
+        mockKorisnik.setAdresa("adresa");
+        mockKorisnik.setTelefon("123456789");
+        mockKorisnik.setPonude(ponude);
+        mockKorisnik.setPrijavljen(false);
+        mockKorisnik.setURLL("url");
+        mockKorisnik.setNaziv("naziv");
+
+        when(korisnikRepository.findById(userId)).thenReturn(Optional.of(mockKorisnik));
+
+        Korisnik result = korisnikService.getUserById(userId);
+
+        assertEquals(userId, result.getId());
+        assertEquals("adresa", result.getAdresa());
+        assertEquals("123456789", result.getTelefon());
+        assertEquals("tip", result.getTip());
+        assertEquals("email@gmail.com", result.getEmail());
+        assertEquals("password", result.getPassword());
+        assertEquals("username", result.getUsername());
+        assertEquals(false, result.getOdobren());
+        assertNotNull(ponude);
+        assertEquals(false, result.isPrijavljen());
+        assertEquals("url", result.getURLL());
+        assertEquals("naziv", result.getNaziv());
+    }
+
+    
+\end{lstlisting}
+            
+			Zatim smo testirali funkcionalnost spremanja korisnika. 
+                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ @Test
+    @DisplayName("Test spremanja korisnika.")
+    void saveUserTest(){
+        Long userId = 1L;
+        Korisnik mockKorisnik = new Korisnik();
+        List<Ponuda> ponude = new ArrayList<>();
+
+        mockKorisnik.setId(userId);
+        mockKorisnik.setUsername("username");
+        mockKorisnik.setPassword("password");
+        mockKorisnik.setEmail("email@gmail.com");
+        mockKorisnik.setOdobren(false);
+        mockKorisnik.setTip("tip");
+        mockKorisnik.setAdresa("adresa");
+        mockKorisnik.setTelefon("123456789");
+        mockKorisnik.setPonude(ponude);
+        mockKorisnik.setPrijavljen(false);
+        mockKorisnik.setURLL("url");
+        mockKorisnik.setNaziv("naziv");
+
+
+        when(korisnikRepository.save(any(Korisnik.class))).thenReturn(mockKorisnik);
+
+        Korisnik savedKorisnik = korisnikService.saveKorisnik(mockKorisnik);
+
+        verify(korisnikRepository, times(1)).save(mockKorisnik);
+        
+        assertEquals(userId, savedKorisnik.getId());
+        assertEquals("adresa", savedKorisnik.getAdresa());
+        assertEquals("123456789", savedKorisnik.getTelefon());
+        assertEquals("tip", savedKorisnik.getTip());
+        assertEquals("email@gmail.com", savedKorisnik.getEmail());
+        assertEquals("password", savedKorisnik.getPassword());
+        assertEquals("username", savedKorisnik.getUsername());
+        assertEquals(false, savedKorisnik.getOdobren());
+        assertNotNull(ponude);
+        assertEquals(false, savedKorisnik.isPrijavljen());
+        assertEquals("url", savedKorisnik.getURLL());
+        assertEquals("naziv", savedKorisnik.getNaziv());
+    }
+    
+\end{lstlisting}
+            
+			Nakon toga smo testirali ponudu, to jest OfferService. Za te testove smo koristili sučelja Knjiga, Korisnik, Ponuda, PonudaDto, BookRepository, KorisnikRepository, OfferRepository i OfferService. 
+            Prvo smo testirali brisanje ponude. 
+            
+                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ @Test
+    @DisplayName("Testiranje brisanja ponude.")
+    void deleteOfferTest() {
+        Long offerId = 1L;
+
+        offerService.deleteOffer(offerId);
+
+        verify(offerRepository, times(1)).deleteById(offerId);
+    }
+    
+\end{lstlisting}
+            A zatim smo testirali spremanje ponude. 
+                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+  @Test
+    @DisplayName("Testiranje spremanja ponude.")
+    void saveOffer() {
+        // Arrange
+        PonudaDto ponudaDto = new PonudaDto();
+        ponudaDto.setPonuditeljId(1L);
+        ponudaDto.setKnjigaId(2L);
+        ponudaDto.setCijena(100);
+        ponudaDto.setBrojPrimjeraka(5);
+
+        Korisnik mockKorisnik = new Korisnik();
+        Knjiga mockKnjiga = new Knjiga();
+        Ponuda mockPonuda = new Ponuda();
+
+        when(korisnikRepository.findById(ponudaDto.getPonuditeljId())).thenReturn(java.util.Optional.of(mockKorisnik));
+        when(bookRepository.findById(ponudaDto.getKnjigaId())).thenReturn(java.util.Optional.of(mockKnjiga));
+        when(offerRepository.save(any(Ponuda.class))).thenReturn(mockPonuda);
+
+
+        Ponuda resultPonuda = offerService.saveOffer(ponudaDto);
+
+        verify(offerRepository).save(any(Ponuda.class));
+
+        assertEquals(mockPonuda, resultPonuda);
+    }
+
+    
+\end{lstlisting}
+            Zatim smo testirali kada spremamo ponudu, a ne postoji taj userId.
+                  \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+ @Test
+    @DisplayName("Testiranje kada spremamo ponudu. a ne postoji taj userId.")
+    void saveOfferInvalid() {
+        PonudaDto ponudaDto = new PonudaDto();
+        ponudaDto.setPonuditeljId(1L);
+        ponudaDto.setKnjigaId(2L);
+        ponudaDto.setCijena(100);
+        ponudaDto.setBrojPrimjeraka(5);
+
+        when(korisnikRepository.findById(ponudaDto.getPonuditeljId())).thenReturn(Optional.empty());
+
+        // Act & Assert
+        // Verify that ResponseStatusException is thrown with the correct status and message
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
+            offerService.saveOffer(ponudaDto);
+        });
+
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
+        assertEquals("Korisnik not found", exception.getReason());
+    }
+    
+\end{lstlisting}
+
+            Svi testovi su se ispravno izveli s očekivanim rezultatima. 
+            \eject
+			
+			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/UnitiTest1.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Rezultat testiranja BookService }
+				\label{fig:BookService1}
+			\end{figure}
+			
+			\eject
+            \eject
+			
+			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/UnitiTest3.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Rezultat testiranja KorisnikService }
+				\label{fig:KorisnikService1}
+			\end{figure}
+			
+			\eject
+            \eject
+			
+			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/UnitiTest3.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Rezultat testiranja OfferService}
+				\label{fig:OfferService1}
+			\end{figure}
+			
+			\eject
+			
+			
 			
 			
 			
