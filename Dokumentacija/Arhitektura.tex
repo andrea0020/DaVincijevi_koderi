@@ -243,54 +243,47 @@ U ovakvoj organizaciji, svaki sloj ima jasno definiranu ulogu, što doprinosi bo
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[8, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
+					
+					\hline \SetCell[c=3]{c}{\textbf{Korisnik}}	 \\ \hline[3pt]
+					\SetCell{LightBlue} & VARCHAR(13) & \\ \hline
+					userId & INT & Jedinstveni identifikator, autogeneriran od strane baze \\ \hline
+					username & VARCHAR & Jedinstveno korisničko ime \\ \hline
+					password & VARCHAR & Jedinstveno lozinka \\ \hline
+					naziv & VARCHAR & Naziv korisnika \\ \hline
+					adresa & VARCHAR & Adresa korisnika \\ \hline
+					telefon & INT & Telefon korisnika \\ \hline
+					email & VARCHAR & Email korisnika \\ \hline
+					tip & VARCHAR & Tip korisnika \\ \hline
+					\\
+					
 					\hline \SetCell[c=3]{c}{\textbf{Knjiga}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}ISBN & VARCHAR(13) & \\ \hline
-					naslov	& VARCHAR & \\ \hline 
-					autori & VARCHAR &   \\ \hline 
-					jezik & CHAR(3)	& troslovni kod po ISO 639-1 standardu 	\\ \hline 
-					izdavač & VARCHAR & 	\\ \hline
-					brojIzdanja & INT & 	\\ \hline 
-					godinaIzdanja & INT & 	\\ \hline
-					katIzdavača & CHAR(3) & 	\\ \hline
-					zahtZaPr & INT & 	\\ \hline
-					očuvanost & VARCHAR & 	\\ \hline
-					opis & VARCHAR & 	\\ \hline
-					slika & BYTEA & 	\\ \hline
-					žanr & VARCHAR & 	
+					\SetCell{LightGreen} & VARCHAR(13) & \\ \hline
+					bookId & INT & Jedinstveni identifikator, autogeneriran od strane baze \\ \hline
+					naslov	& VARCHAR & Naziv knjige \\ \hline 
+					autor & VARCHAR & Ime autora \\ \hline 
+					izdavač & VARCHAR & Ime izdavača	\\ \hline
+					brojIzdanja & INT & Broj izdanja knjige	\\ \hline 
+					godIzdanja & INT & Godina izdanja knjige	\\ \hline
+					kategorija & CHAR(3) & Kategorija izdavača	\\ \hline
+					zahtjevi & INT & Zahtjev za prijevod knjige	\\ \hline
+					očuvanost & VARCHAR & Očuvanost knjige	\\ \hline
+					opis & VARCHAR & Kratki opis knjige	\\ \hline
+					slika & VARCHAR & Prikaz knjige	\\ \hline
+					žanr & VARCHAR & Žanr knjige \\ \hline
+					isbn & INT & ISBN knjige \\ \hline
 					\\
 					
-					\hline \SetCell[c=3]{c}{\textbf{Knjiga dobavljivost}}	 \\ \hline[3pt]
-					\SetCell{LightBlue}ISBN & VARCHAR(13) & \\ \hline
-					dobavljivost & CHAR(3) &
+					\hline \SetCell[c=3]{c}{\textbf{Ponuda}}	 \\ \hline[3pt]
+					\SetCell{LightGreen} & VARCHAR(32) & \\ \hline
+					offerId	& INT & Jedinstveni identifikator, autogeneriran od strane baze  	\\ \hline 
+					nazivPonuditelja & VARCHAR & Naziv ponuditelja  \\ \hline 
+					brojPrimjeraka & INT & Broj primjeraka knjige 		\\ \hline 
+					cijena & INT & Cijena knjige \\	\hline
 					\\
 					
-					\hline \SetCell[c=3]{c}{\textbf{Ponuditelj}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}korisničkoIme & VARCHAR(32) & \\ \hline
-					lozinka	& VARCHAR(32) &   	\\ \hline 
-					naziv & VARCHAR &   \\ \hline 
-					adresa & VARCHAR	&  		\\ \hline 
-					epošta & VARCHAR & 	\\ \hline
-					telefon & VARCHAR & 	\\ \hline 
-					godinaIzdanja & INT & 	\\ \hline
-					katIzdavača & CHAR(3) & 	\\ \hline
-					zahtZaPr & INT & 	\\ \hline
-					lokacija & POINT & 	\\ \hline
-					tip & VARCHAR & izdavač, antikvarijat, preprodavač
-					\\
-					
-					\hline \SetCell[c=3]{c}{\textbf{čekaOdobrenje}}	 \\ \hline[3pt]
-					\SetCell{LightBlue}korisničkoIme & VARCHAR(32) & \\ \hline
-					status & VARCHAR &
-					\\
-					
-					\hline \SetCell[c=3]{c}{\textbf{nudi}}	 \\ \hline[3pt]
-					\SetCell{LightBlue}naziv & VARCHAR & \\ \hline
-					\SetCell{LightBlue}ISBN & CHAR(13) &   	\\ \hline 
-					broj & INT &   \\ \hline 
-					cijena & DECIMAL(6, 2) & \\ \hline 
 			   \end{longtblr}
 				
 				
@@ -307,7 +300,7 @@ U ovakvoj organizaciji, svaki sloj ima jasno definiranu ulogu, što doprinosi bo
 				\eject
 				
 				\begin{figure}[H]
-					\includegraphics[width=\textwidth]{dijagrami/baza_ERmod_v2.PNG} %veličina u odnosu na širinu linije
+					\includegraphics[width=\textwidth]{dijagrami/baza_ERmod_v3.PNG} %veličina u odnosu na širinu linije
 					\centering
 					\caption{ER dijagram baze podataka}
 					\label{fig:arh2}
@@ -321,8 +314,21 @@ U ovakvoj organizaciji, svaki sloj ima jasno definiranu ulogu, što doprinosi bo
 			
 			Idejno razrađeni dijagram razreda opisuje strukturu web aplikacije. Uključuje ApplicationController za upravljanje zahtjevima vezanim uz navigaciju na web stranici, KorisnikController za obrađivanje korisničkih zahtjeva, LoginController za autentikaciju korisnika te Korisnik za predstavljanje entiteta korisnika. KorisnikService brine o logici poslovne logike vezane uz korisnike, dok KorisnikRepository predstavlja sučelje za pristup podacima korisnika u bazi podataka. StoZelisCitatiApplication predstavlja glavni razred aplikacije s main metodom za pokretanje, dok su veze između razreda usmjerene prema ovisnostima i suradnji između njih. Ovo omogućava bolje razumijevanje strukture aplikacije, odvojenost odgovornosti i međusobnu interakciju između komponenti. \\ \\
 			
-				\begin{figure}[H]
+			\begin{figure}[H]
 				\includegraphics[width=\textwidth]{dijagrami/ClassDiagram1.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Dijagram razreda}
+				\label{fig:razred}
+			\end{figure}
+			
+			\eject
+			
+			
+			Idejno razrađeni dijagram razreda opisuje sve tri vrste ponuditelja te njihove funkcionalnosti. Predstavljena je ovisnost i suradnja između razreda.
+			\\ \\
+			
+				\begin{figure}[H]
+				\includegraphics[width=\textwidth]{dijagrami/UML dijagram razreda v1.PNG} %veličina u odnosu na širinu linije
 				\centering
 				\caption{Dijagram razreda}
 				\label{fig:razred1}
@@ -330,12 +336,15 @@ U ovakvoj organizaciji, svaki sloj ima jasno definiranu ulogu, što doprinosi bo
 			
 			\eject
 			
+						
 			
 			
-			\textbf{\textit{dio 2. revizije}}\\			
-			
-			\textit{Prilikom druge predaje projekta dijagram razreda i opisi moraju odgovarati stvarnom stanju implementacije}
-			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{dijagrami/UML dijagram razreda v2.PNG} %veličina u odnosu na širinu linije
+				\centering
+				\caption{Dijagram razreda}
+				\label{fig:razred2}
+			\end{figure}
 			
 			
 			\eject

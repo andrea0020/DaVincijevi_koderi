@@ -31,7 +31,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			\subsection{Ispitivanje komponenti}
 			     Sastavne programske komponente formirane su od nekoliko jedinica, uključujući osnovne dijelove programa poput razreda, pripadajućih metoda i atributa, koje međusobno intenzivno surađuju. Interakcija se ostvaruje kroz proceduralna sučelja, gdje svaka komponenta enkapsulira određeni skup funkcionalnosti koje druge komponente mogu pozivati. Evaluacija komponenata izvodi se s pomoću Junit radnog okvira, koji automatizira proces testiranja. Upotrebom dviju vrsta testova, jednih u uobičajenim uvjetima rada i drugih s unosom neispravnih i rubnih uvjeta, analizira se očekivano ponašanje razreda i unaprijed definirani izlaz metoda.
             Za testiranje BookService metoda koristili smo sučelja Knjiga, Pondua, i BookRepository. Prvo smo testirali saveBook metodu.
-           \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+           \begin{lstlisting}[language=Java, label=lst:java_example, basicstyle=\scriptsize]
  @Test
     @DisplayName("Testiranje saveBook metode")
     void testSaveBook() {
@@ -80,11 +80,11 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
         assertNotNull(savedKnjiga.getPonude());
 
     }
-\end{lstlisting}
+			\end{lstlisting}
 
    
 			A zatim smo testirali deleteBook metodu. 
-                  \begin{lstlisting}[language=Java, label=2st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=2st:java_example, basicstyle=\scriptsize]
  @Test
     @DisplayName("Testiranje deleteBook metode.")
     void testDeleteBook(){
@@ -93,14 +93,14 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
         verify(bookRepository).deleteById(bookIdToDelete);
     }
     
-\end{lstlisting}
+				\end{lstlisting}
 
             Zatim smo testirali KorisnikService. Za to smo koristili sučelja Korisnik, Ponuda, i KorisnikRepository.
             
 			Prvo smo testirali dohvaćanje korisnika. 
-                  \begin{lstlisting}[language=Java, label=3st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=3st:java_example, basicstyle=\scriptsize]
  @Test
-    @DisplayName("Test dohvaćanja korisnika.")
+    @DisplayName("Test dohvacanja korisnika.")
     void testGetUserById() {
         Long userId = 1L;
         Korisnik mockKorisnik = new Korisnik();
@@ -138,10 +138,10 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
     }
 
     
-\end{lstlisting}
+				\end{lstlisting}
             
 			Zatim smo testirali funkcionalnost spremanja korisnika. 
-                  \begin{lstlisting}[language=Java, label=4st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=4st:java_example, basicstyle=\scriptsize]
  @Test
     @DisplayName("Test spremanja korisnika.")
     void saveUserTest(){
@@ -188,7 +188,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			Nakon toga smo testirali ponudu, to jest OfferService. Za te testove smo koristili sučelja Knjiga, Korisnik, Ponuda, PonudaDto, BookRepository, KorisnikRepository, OfferRepository i OfferService. 
             Prvo smo testirali brisanje ponude. 
             
-                  \begin{lstlisting}[language=Java, label=5st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=5st:java_example, basicstyle=\scriptsize]
  @Test
     @DisplayName("Testiranje brisanja ponude.")
     void deleteOfferTest() {
@@ -201,7 +201,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
     
 \end{lstlisting}
             A zatim smo testirali spremanje ponude. 
-                  \begin{lstlisting}[language=Java, label=6st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=6st:java_example, basicstyle=\scriptsize]
   @Test
     @DisplayName("Testiranje spremanja ponude.")
     void saveOffer() {
@@ -231,7 +231,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
     
 \end{lstlisting}
             Zatim smo testirali kada spremamo ponudu, a ne postoji taj userId.
-                  \begin{lstlisting}[language=Java, label=7st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=7st:java_example, basicstyle=\scriptsize]
  @Test
     @DisplayName("Testiranje kada spremamo ponudu. a ne postoji taj userId.")
     void saveOfferInvalid() {
@@ -260,7 +260,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			
 			
 			\begin{figure}[H]
-				\includegraphics[width=\textwidth]{slike/UnitiTest1.PNG} %veličina u odnosu na širinu linije
+				\includegraphics[width=\textwidth]{slike/UnitTest1.PNG} %veličina u odnosu na širinu linije
 				\centering
 				\caption{Rezultat testiranja BookService }
 				\label{fig:BookService1}
@@ -269,7 +269,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			
 			
 			\begin{figure}[H]
-				\includegraphics[width=\textwidth]{slike/UnitiTest3.PNG} %veličina u odnosu na širinu linije
+				\includegraphics[width=\textwidth]{slike/UnitTest3.PNG} %veličina u odnosu na širinu linije
 				\centering
 				\caption{Rezultat testiranja KorisnikService }
 				\label{fig:KorisnikService1}
@@ -278,7 +278,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			
 			
 			\begin{figure}[H]
-				\includegraphics[width=\textwidth]{slike/UnitiTest2.PNG} %veličina u odnosu na širinu linije
+				\includegraphics[width=\textwidth]{slike/UnitTest2.PNG} %veličina u odnosu na širinu linije
 				\centering
 				\caption{Rezultat testiranja OfferService}
 				\label{fig:OfferService1}
@@ -295,7 +295,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			 Testiranje cjelokupnog sustava obavljeno je korištenjem Selenium WebDriver-a unutar JUnit testova. U svakom od testova unaprijed postavljamo konfiguraciju drivera, uključujući URL aplikacije. Zatim driver automatski locira prethodno definirane elemente, a test mu proslijeđuje potrebne podatke.
     
             Prvo smo testirali logiranje već prije registriranog korisnika.
-           \begin{lstlisting}[language=Java, label=8st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+           \begin{lstlisting}[language=Java, label=8st:java_example, basicstyle=\scriptsize9]
  public class SeleniumTest1 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
@@ -338,7 +338,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 
    
 			Zatim smo testirali registraciju novoga korisnka.
-                  \begin{lstlisting}[language=Java, label=9st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=9st:java_example, basicstyle=\scriptsize]
  public class SeleniumTest2 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
@@ -386,13 +386,13 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 \end{lstlisting}
 
 			Nakon toga testiramo ulogiravanje registriranog korisnika, te nakon ulogiravanja dodajemo knjigu.
-                  \begin{lstlisting}[language=Java, label=l0st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=l0st:java_example, basicstyle=\scriptsize]
  public class SeleniumTest3 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
         WebDriver webDriver = new ChromeDriver();
         String oznaka = "hrv+dobavljiva";
-        String kategorija = "domaći";
+        String kategorija = "domaci";
         String stanje = "izvrsno";
         webDriver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
         boolean result = addBookTest(webDriver, "user", "pass", "naziv", "autor", "izdavac", kategorija,
@@ -459,7 +459,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 \end{lstlisting}
             
 			Te za kraj smo testirali unošenje zahtjeva za prevođenje knjige.
-                  \begin{lstlisting}[language=Java, label=l1st:java_example, basicstyle=\scriptsize, baselinestretch=0.9]
+                  \begin{lstlisting}[language=Java, label=l1st:java_example, basicstyle=\scriptsize]
  public class SeleniumTest4 {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Faks\\TrecaGod\\PROGI\\Projekt\\chromedriver-win64\\chromedriver.exe");
@@ -496,7 +496,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			
 			
 			\begin{figure}[H]
-				\includegraphics[width=\textwidth]{slike/SeliniumTest1.PNG} %veličina u odnosu na širinu linije
+				\includegraphics[width=\textwidth]{slike/SelTest1.PNG} %veličina u odnosu na širinu linije
 				\centering
 				\caption{Rezultat testiranja logina }
 				\label{fig:loginTest1}
@@ -505,7 +505,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			
 			
 			\begin{figure}[H]
-				\includegraphics[width=\textwidth]{slike/SeliniumTest2.PNG} %veličina u odnosu na širinu linije
+				\includegraphics[width=\textwidth]{slike/SelTest2.PNG} %veličina u odnosu na širinu linije
 				\centering
 				\caption{Rezultat testiranja registriranja }
 				\label{fig:registerTest1}
@@ -514,7 +514,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			
 			
 			\begin{figure}[H]
-				\includegraphics[width=\textwidth]{slike/SeliniumTest3.PNG} %veličina u odnosu na širinu linije
+				\includegraphics[width=\textwidth]{slike/SelTest3.PNG} %veličina u odnosu na širinu linije
 				\centering
 				\caption{Rezultat testiranja logina uz dodavanje knjige}
 				\label{fig:addBookTest1}
@@ -523,7 +523,7 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			
 			
 			\begin{figure}[H]
-				\includegraphics[width=\textwidth]{slike/SeliniumTest4.PNG} %veličina u odnosu na širinu linije
+				\includegraphics[width=\textwidth]{slike/SelTest4.PNG} %veličina u odnosu na širinu linije
 				\centering
 				\caption{Rezultat testiranja dodavanje zahtjeva za prevođenje}
 				\label{fig:testTranslationRequest1}
@@ -550,20 +550,20 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 		\section{Upute za puštanje u pogon}
 		
 			
-            Za deploy cjelokupne aplikacije 	korištena je usluga Render čime je omogućeno da aplikacija bude javno dostupna. Backend aplikacije je napisan u Springboot-u te smo koristili IDE InteliJ.  FrontEnd je napisan s pomoću tehnologije React.js te je pisan u javaScriptu. Baza podataka se nalazi na javnom Render Serveru
+            Za deploy cjelokupne aplikacije 	korištena je usluga Render čime je omogućeno da aplikacija bude javno dostupna. Backend aplikacije je napisan u Springboot-u te smo koristili IDE IntelliJ.  Frontend je napisan s pomoću tehnologije React.js te je pisan u JavaScriptu. Baza podataka se nalazi na javnom Render serveru. \\
 
             \textbf{Konfiguracija Backenda:}
             
-            S pomoću IDE Intellij je ostvarena Backend podrška, te se radi o maven projektu.
-            Da bi se lokalno pokrenulo na računalu potrebno je instalirati Maven dependecies(Intellij ovo radi automatski pri pokretanju projekta).
+            S pomoću IDE Intellij je ostvarena backend podrška, te se radi o Maven projektu.
+            Da bi se lokalno pokrenulo na računalu potrebno je instalirati Maven dependecies (Intellij ovo radi automatski pri pokretanju projekta).
             Stoga je potrebno kliknuti \textit{run/build project} te će se backend automatski povezati s bazom podataka.
-            Nakon toga je potrebno pokrenuti Frontend.
+            Nakon toga je potrebno pokrenuti frontend. \\
 
-            \textbf{Konfiguracija FrontEnda:}
+            \textbf{Konfiguracija Frontenda:}
             
-            Što se tiče Frontenda potrebno je imati instaliran Node (preporučljiva najnovija verzija). 
-            Da bi se stranica pokrenula na localhostu potrebno je prvo utipkati u terminal direktorija FRONTEND. 
-                \textit{npm install}
+            Što se tiče frontenda potrebno je imati instaliran Node.js (preporučljiva najnovija verzija). 
+            Da bi se stranica pokrenula na localhostu prvo je potrebno pozicionirati se u direktorij "frontend" te utipkati u terminal  
+                \textit{npm install.}
          
 			
 			
@@ -577,5 +577,5 @@ Za ostvarenje interaktivne karte i geokodiranje, korištene su usluge platforme 
 			
  	
             Te nakon toga u terminal napisati: 
-            \textit{npm run dev}
-            Ovo će pokrenuti React.js FrontEnd dio aplikacije koristeći najnoviju verziju VITE-a na default \textit{localhostu:5137}
+            \textit{npm run dev.}
+            Ovo će pokrenuti React.js frontend dio aplikacije koristeći najnoviju verziju VITE-a na default \textit{localhostu:5137}
