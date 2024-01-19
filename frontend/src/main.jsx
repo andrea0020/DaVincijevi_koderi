@@ -15,7 +15,7 @@ import { OfferPage } from './components/offer/OfferPage.jsx';
 import { BookPage } from './components/book/BookPage.jsx';
 import { Searching } from './components/search/Search.jsx';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { OSMap } from './components/map/osMap.jsx';
+import { OSMap } from './components/map/OSMap.jsx';
 import { FetchDataBooks } from './components/data/data.jsx';
 import { BookDetails } from './components/book/BookDetails.jsx';
 import { Book } from './components/book/Book.jsx';
